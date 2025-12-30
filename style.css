@@ -232,8 +232,8 @@ body {
   }
 
   .photos img {
-    width: 130px;
-    height: 180px;
+    width: 180px;
+    height: 230px;
   }
 
   .flip-back {
@@ -262,3 +262,4 @@ body {
   }
 
 }
+
