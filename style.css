@@ -108,7 +108,7 @@ body {
   transform: rotateY(180deg);
   flex-direction: column;
   padding: 24px;
-  padding-top: 210px;
+  padding-top: 180px;
   position: relative;
   z-index: 2;
 }
@@ -124,7 +124,7 @@ body {
 .photos {
   position: relative;
   width: 100%;
-  max-width: 260px
+  max-width: 260px;
   height: 150px;
   margin: 0 auto 20px;
 }
@@ -235,6 +235,7 @@ body {
   }
 
 }
+
 
 
 
