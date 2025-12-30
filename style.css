@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
 }
 
 body {
@@ -15,7 +16,7 @@ body {
 }
 
 /* ===============================
-   💌 INTRO SECTION
+   💌 INTRO
 ================================ */
 .intro {
   height: 100vh;
@@ -30,7 +31,7 @@ body {
 }
 
 /* ===============================
-   🎬 SLIDER & SLIDES
+   🎬 SLIDER
 ================================ */
 .slider {
   height: 100vh;
@@ -43,10 +44,9 @@ body {
   display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;   /* ⬅️ important */
+  justify-content: flex-start;
   padding-top: 10vh;
 }
-
 
 .slide.active {
   display: flex;
@@ -61,15 +61,8 @@ body {
   height: 420px;
   perspective: 1200px;
   cursor: pointer;
-  margin-bottom: 45px;
-  position: relative;   /* 👈 THIS is the missing piece */
+  margin-bottom: 40px;
 }
-.slide-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 
 .flip-inner {
   width: 100%;
@@ -78,7 +71,6 @@ body {
   transform-style: preserve-3d;
 }
 
-
 .flip-card.active .flip-inner {
   transform: rotateY(180deg);
 }
@@ -86,7 +78,7 @@ body {
 .flip-front,
 .flip-back {
   position: absolute;
-  inset: 0;               /* replaces width/height */
+  inset: 0;
   border-radius: 25px;
   backface-visibility: hidden;
   background: rgba(255,255,255,0.15);
@@ -97,21 +89,30 @@ body {
 }
 
 .flip-front {
+  flex-direction: column;
   font-size: 26px;
-  padding: 20px;
+  padding: 30px;
+}
+
+.flip-front .hint {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  font-size: 14px;
+  opacity: 0.7;
 }
 
 .flip-back {
-  position: relative;
-  display: flex;
+  transform: rotateY(180deg);
   flex-direction: column;
-  justify-content: flex-start;
   padding: 24px;
-  padding-top: 140px; /* space reserved for images */
+  padding-top: 130px;
 }
 
 .flip-back p {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  line-height: 1.7;
 }
 
 /* ===============================
@@ -122,24 +123,33 @@ body {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  gap: 14px;
+  width: 280px;
+  height: 200px;
 }
 
 .photos img {
-  width: 110px;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  position: absolute;
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(255,255,255,0.35);
+  transition: transform 0.3s ease;
 }
 
 .photos img:first-child {
-  left: 40%;
-  transform: rotate(-12deg);
+  left: 0;
+  transform: rotate(-8deg);
 }
 
 .photos img:last-child {
-  left: 50%;
-  transform: rotate(12deg);
+  right: 0;
+  transform: rotate(8deg);
+}
+
+.photos img:hover {
+  transform: scale(1.05) rotate(0deg);
+  z-index: 5;
 }
 
 /* ===============================
@@ -167,7 +177,7 @@ body {
 }
 
 /* ===============================
-   🎆 FINAL SECTION
+   🎆 FINAL
 ================================ */
 .final {
   padding: 80px 10%;
@@ -190,7 +200,7 @@ body {
 }
 
 /* ===============================
-   ✨ GLOW TEXT
+   ✨ GLOW
 ================================ */
 .glow {
   animation: glowPulse 2.5s ease-in-out infinite alternate;
@@ -202,297 +212,16 @@ body {
 }
 
 /* ===============================
-   🎆 FIREWORKS
-================================ */
-.firework {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: white;
-  border-radius: 50%;
-  animation: explode 1s ease-out forwards;
-}
-
-@keyframes explode {
-  from { transform: scale(1); opacity: 1; }
-  to   { transform: scale(5); opacity: 0; }
-}
-.flip-front {
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  padding: 30px;
-  min-height: 100%;
-}
-
-
-.flip-front .hint {
-  position: absolute;
-  bottom: 18px;
-  left: 0;
-  right: 0;
-  font-size: 14px;
-  opacity: 0.7;
-}
-/* ===============================
-   🧱 LAYOUT STABILIZER (FIXES SPACING)
-================================ */
-
-.slide-content {
-  min-height: calc(100vh - 10vh);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Keep card in the visual center */
-.flip-card {
-  margin-top: 6vh;
-}
-
-/* Button group spacing */
-.slide .next {
-  margin-top: 35px;
-}
-
-.slide .prev {
-  margin-top: 10px;
-}
-.photos {
-  position: relative;
-  width: 280px;
-  height: 200px;
-  margin: -20px auto 25px auto;
-}
-
-.photos img {
-  position: absolute;
-  width: 160px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 10 10px 25px rgba(255,255,255,0.35);
-  transition: transform 0.3s ease;
-  filter: contrast(1.05) saturate(1.05);
-}
-
-/* Left photo */
-.photos img:first-child {
-  left: 0;
-  transform: rotate(-8deg);
-}
-
-/* Right photo */
-.photos img:last-child {
-  right: 0;
-  transform: rotate(8deg);
-}
-.photos img:hover {
-  transform: scale(1.05) rotate(0deg);
-  z-index: 5;
-}
-
-.final {
-  position: relative;
-  z-index: 5;
-}
-@media (max-width: 768px) {
-
-  .card {
-    width: 90%;
-    min-height: 55vh;
-    padding: 28px 22px;
-    border-radius: 22px;
-  }
-
-  .card p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-  }
-
-  .card h2 {
-    font-size: 1.5rem;
-  }
-
-  .nav-btn {
-    font-size: 1rem;
-    padding: 12px 22px;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .slide .glass,
-  .slide .message,
-  .slide > div {
-    width: 90% !important;
-    min-height: 55vh !important;
-    padding: 30px 24px !important;
-    border-radius: 24px !important;
-  }
-
-  .slide p {
-    font-size: 1.2rem !important;
-    line-height: 1.8 !important;
-  }
-
-  .slide h2 {
-    font-size: 1.6rem !important;
-  }
-
-  .nav-btn {
-    font-size: 1rem !important;
-    padding: 12px 22px !important;
-  }
-}
-
-/* ===============================
-   🖼️ MOBILE IMAGE + CARD LAYOUT FIX
-================================ */
-@media (max-width: 768px) {
-
-  .slide > div {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-  }
-
-  .slide img {
-    max-width: 90px;
-    height: auto;
-    margin: 0 10px 12px;
-  }
-
-  .image-row {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    margin-bottom: 18px;
-  }
-
-}
-.photos {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.photos img {
-  width: 130px;
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* Mobile: allow big images but never overlap text */
-@media (max-width: 768px) {
-  .photos img {
-    width: 140px;
-  }
-}
-/* ===============================
-   🧱 STRUCTURE THE FLIP BACK SIDE
-================================ */
-.flip-back {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 24px;
-}
-
-/* ===============================
-   📱 MOBILE IMAGE POSITION FIX
+   📱 MOBILE
 ================================ */
 @media (max-width: 900px) {
-
-  .flip-back {
-    padding-top: 90px;   /* creates safe space for images */
+  .flip-card {
+    height: 520px;
   }
 
   .photos {
-    position: absolute;
-    top: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-  }
-
-  .photos img {
-    width: 120px;
-  }
-}
-
-/* ===============================
-   🔒 FINAL LOCKED FLIP-BACK LAYOUT
-================================ */
-
-.flip-back {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 24px;
-  padding-top: 140px;
-}
-
-.flip-back p {
-  margin-bottom: 25px;
-}
-
-/* ===============================
-   🖼️ FINAL PHOTO LAYOUT
-================================ */
-
-.photos {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 14px;
-  width: 280px;
-  height: 200px;
-}
-
-.photos img {
-  position: absolute;
-  width: 160px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(255,255,255,0.35);
-  transition: transform 0.3s ease;
-  filter: contrast(1.05) saturate(1.05);
-}
-
-/* Left photo */
-.photos img:first-child {
-  left: 0;
-  transform: rotate(-8deg);
-}
-
-/* Right photo */
-.photos img:last-child {
-  right: 0;
-  transform: rotate(8deg);
-}
-
-.photos img:hover {
-  transform: scale(1.05) rotate(0deg);
-  z-index: 5;
-}
-
-/* ===============================
-   📱 MOBILE TUNING
-================================ */
-
-@media (max-width: 900px) {
-  .photos {
-    width: 260px;
-    height: 190px;
+    width: 240px;
+    height: 180px;
   }
 
   .photos img {
@@ -501,7 +230,37 @@ body {
   }
 
   .flip-back {
-    padding-top: 120px;
+    padding-top: 110px;
+  }
+
+  .flip-back p {
+    font-size: 1.05rem;
   }
 }
+/* ===============================
+   📱 MOBILE FIXES
+================================ */
 
+@media (max-width: 600px) {
+
+  .slide {
+    padding-top: 6vh;
+  }
+
+  .card {
+    min-height: 75vh;
+  }
+
+  .card h1 {
+    font-size: 1.6rem;
+  }
+
+  .tap {
+    font-size: 0.9rem;
+  }
+
+  .photo-pair {
+    bottom: 3vh;
+    transform: scale(0.9);
+  }
+}
