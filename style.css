@@ -44,8 +44,8 @@ body {
   display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 10vh;
+  justify-content: center;
+  padding-top: 0;
 }
 
 .slide.active {
@@ -58,7 +58,7 @@ body {
 .flip-card {
   width: 90%;
   max-width: 700px;
-  min-height: 420px;
+  min-height: 460px;
   height: auto;
   perspective: 1200px;
   cursor: pointer;
@@ -108,7 +108,9 @@ body {
   transform: rotateY(180deg);
   flex-direction: column;
   padding: 24px;
-  padding-top: 130px;
+  padding-top: 230px;
+  position: relative;
+  z-index: 2;
 }
 
 .flip-back p {
@@ -124,28 +126,34 @@ body {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 280px;
-  height: 200px;
+  width: 260px;
+  height: 300px;
+  z-index: 1;
 }
 
 .photos img {
   position: absolute;
-  width: 160px;
-  height: 200px;
+  width: 180px;
+  height: 230px;
   object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(255,255,255,0.35);
-  transition: transform 0.3s ease;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+  transition: 0.3s ease;
 }
 
 .photos img:first-child {
-  left: 0;
-  transform: rotate(-8deg);
+  top: 35px;
+  left: 45px;
+  z-index: 2;
+  transform: rotate(-5deg);
 }
 
 .photos img:last-child {
-  right: 0;
-  transform: rotate(8deg);
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform: rotate(6deg);
+  opacity: 0.85;
 }
 
 .photos img:hover {
@@ -213,38 +221,17 @@ body {
 }
 
 /* ===============================
-   📱 MOBILE (CLEAN + FIXED)
+   📱 MOBILE
 ================================ */
 @media (max-width: 600px) {
 
-  .slide {
-    padding-top: 12vh;
-  }
-
   .flip-card {
     width: 94%;
-    min-height: 460px;
+    min-height: 540px;
   }
-   
-.photos {
-  position: relative;
-  width: 260px;     /* expanded container */
-  height: 300px;    /* expanded container */
-  margin: 0 auto 25px;
-}
 
-.photos img {
-  position: absolute;
-  width: 180px;
-  height: 230px;
-  object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.28);
-}
-}
-
-  .flip-back {
-    padding-top: 110px;
+  .flip-front {
+    font-size: 1.4rem;
   }
 
   .flip-back p {
@@ -252,45 +239,4 @@ body {
     line-height: 1.55;
   }
 
-  .flip-front {
-    font-size: 1.4rem;
-  }
 }
-.photos img:first-child {
-  top: 35px;
-  left: 45px;
-  z-index: 2;
-  transform: rotate(-5deg);
-}
-
-.photos img:last-child {
-  top: 0;
-  left: 0;
-  z-index: 1;
-  transform: rotate(6deg);
-  opacity: 0.85;
-}
-
-
-/* 🧠 FINAL MOBILE TEXT FIX */
-@media (max-width: 600px) {
-
-  .flip-back {
-    padding-top: 230px;   /* reserve space for photos */
-  }
-
-  .flip-card {
-    min-height: 540px;    /* ensure card never collapses */
-  }
-
-}
-
-.flip-back {
-  position: relative;
-  z-index: 2;
-}
-.photos {
-  z-index: 1;
-}
-
-
