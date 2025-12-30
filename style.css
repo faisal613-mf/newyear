@@ -102,9 +102,12 @@ body {
 }
 
 .flip-back {
-  transform: rotateY(180deg);
-  padding: 30px;
+  position: relative;
+  display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  padding: 24px;
+  padding-top: 140px; /* space reserved for images */
 }
 
 .flip-back p {
@@ -115,18 +118,18 @@ body {
    🖼️ PHOTOS
 ================================ */
 .photos {
-  position: relative;
-  height: 200px;
-  margin-bottom: 30px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 14px;
 }
 
 .photos img {
-  width: 140px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 15px;
-  position: absolute;
-  top: 0;
+  width: 110px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .photos img:first-child {
@@ -419,6 +422,86 @@ body {
 
   .photos img {
     width: 120px;
+  }
+}
+
+/* ===============================
+   🔒 FINAL LOCKED FLIP-BACK LAYOUT
+================================ */
+
+.flip-back {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 24px;
+  padding-top: 140px;
+}
+
+.flip-back p {
+  margin-bottom: 25px;
+}
+
+/* ===============================
+   🖼️ FINAL PHOTO LAYOUT
+================================ */
+
+.photos {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 14px;
+  width: 280px;
+  height: 200px;
+}
+
+.photos img {
+  position: absolute;
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(255,255,255,0.35);
+  transition: transform 0.3s ease;
+  filter: contrast(1.05) saturate(1.05);
+}
+
+/* Left photo */
+.photos img:first-child {
+  left: 0;
+  transform: rotate(-8deg);
+}
+
+/* Right photo */
+.photos img:last-child {
+  right: 0;
+  transform: rotate(8deg);
+}
+
+.photos img:hover {
+  transform: scale(1.05) rotate(0deg);
+  z-index: 5;
+}
+
+/* ===============================
+   📱 MOBILE TUNING
+================================ */
+
+@media (max-width: 900px) {
+  .photos {
+    width: 260px;
+    height: 190px;
+  }
+
+  .photos img {
+    width: 130px;
+    height: 180px;
+  }
+
+  .flip-back {
+    padding-top: 120px;
   }
 }
 
