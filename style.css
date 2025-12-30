@@ -279,3 +279,32 @@ body {
     margin-top: 1.2rem;
   }
 }
+@media (max-width: 600px) {
+
+  .slide {
+    padding-top: 4vh;
+  }
+
+  .card {
+    min-height: auto;
+    height: 82vh;              /* 🔑 this is the real fix */
+    padding: 5vh 5vw;
+  }
+
+  .photo-pair {
+    position: relative;
+    bottom: auto;
+    margin: 2vh 0 3vh 0;
+    transform: scale(0.9);
+  }
+
+  .card p {
+    margin-top: 1rem;
+    line-height: 1.45;
+  }
+
+  .next-btn {
+    margin-top: 3vh;
+  }
+}
+
