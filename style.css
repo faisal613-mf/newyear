@@ -370,34 +370,34 @@ body {
   }
 
 }
-/* ===============================
-   🖼️ PHOTO AREA IMPROVEMENT
-================================ */
-
 .photos {
   display: flex;
   justify-content: center;
-  gap: 18px;
-  margin-top: 12px;
-  margin-bottom: 18px;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .photos img {
-  width: 120px;
+  width: 130px;
   height: auto;
   border-radius: 14px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease;
 }
 
-.photos img:hover {
-  transform: scale(1.05);
-}
-
-/* Mobile upgrade */
+/* Mobile: allow big images but never overlap text */
 @media (max-width: 768px) {
   .photos img {
     width: 140px;
   }
 }
+/* ===============================
+   🧱 STRUCTURE THE FLIP BACK SIDE
+================================ */
+.flip-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+
 
