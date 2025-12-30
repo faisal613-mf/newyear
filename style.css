@@ -108,7 +108,7 @@ body {
   transform: rotateY(180deg);
   flex-direction: column;
   padding: 24px;
-  padding-top: 230px;
+  padding-top: 210px;
   position: relative;
   z-index: 2;
 }
@@ -122,18 +122,16 @@ body {
    🖼️ PHOTOS
 ================================ */
 .photos {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 260px;
-  height: 300px;
-  z-index: 1;
+  position: relative;
+  width: 100%;
+  max-width: 260px
+  height: 200px;
+  margin: 0 auto 20px;
 }
 
 .photos img {
   position: absolute;
-  width: 160px;
+  width: 135px;
   height: auto;
   border-radius: 12px;
   object-fit: cover;
@@ -237,4 +235,5 @@ body {
   }
 
 }
+
 
