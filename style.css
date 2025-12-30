@@ -136,7 +136,7 @@ body {
 
 .photos img:first-child {
   transform: rotate(-6deg);
-  margin-right: -40px;
+  margin-right: -25px;
 }
 
 .photos img:last-child {
@@ -227,6 +227,7 @@ body {
   }
 
 }
+
 
 
 
