@@ -108,7 +108,7 @@ body {
   transform: rotateY(180deg);
   flex-direction: column;
   padding: 24px;
-  padding-top: 130px;
+  padding-top: 24px;
   position: relative;
   z-index: 2;
 }
@@ -122,34 +122,26 @@ body {
    🖼️ PHOTOS
 ================================ */
 .photos {
-  position: relative;
-  width: 100%;
-  max-width: 260px;
-  height: 120px;
-  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .photos img {
-  position: absolute;
   width: 135px;
-  height: auto;
   border-radius: 12px;
-  object-fit: cover;
   transition: 0.3s ease;
 }
 
 .photos img:first-child {
-  top: 0;
-  left: 0;
   transform: rotate(-6deg);
+  margin-right: -40px;
 }
 
 .photos img:last-child {
-  top: 30px;
-  left: 70px;
   transform: rotate(6deg);
 }
-
 
 .photos img:hover {
   transform: scale(1.05) rotate(0deg);
@@ -235,6 +227,7 @@ body {
   }
 
 }
+
 
 
 
