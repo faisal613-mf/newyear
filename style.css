@@ -125,7 +125,7 @@ body {
   position: relative;
   width: 100%;
   max-width: 260px
-  height: 200px;
+  height: 150px;
   margin: 0 auto 20px;
 }
 
@@ -235,5 +235,6 @@ body {
   }
 
 }
+
 
 
