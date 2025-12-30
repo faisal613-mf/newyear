@@ -285,4 +285,12 @@ body {
 
 }
 
+.flip-back {
+  position: relative;
+  z-index: 2;
+}
+.photos {
+  z-index: 1;
+}
+
 
