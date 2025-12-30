@@ -400,4 +400,25 @@ body {
   padding: 24px;
 }
 
+/* ===============================
+   📱 MOBILE IMAGE POSITION FIX
+================================ */
+@media (max-width: 900px) {
+
+  .flip-back {
+    padding-top: 90px;   /* creates safe space for images */
+  }
+
+  .photos {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+  }
+
+  .photos img {
+    width: 120px;
+  }
+}
 
