@@ -133,28 +133,25 @@ body {
 
 .photos img {
   position: absolute;
-  width: 180px;
-  height: 230px;
+  width: 160px;
+  height: auto;
+  border-radius: 12px;
   object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.28);
   transition: 0.3s ease;
 }
 
 .photos img:first-child {
-  top: 35px;
-  left: 45px;
-  z-index: 2;
-  transform: rotate(-5deg);
+  top: 0;
+  left: 0;
+  transform: rotate(-6deg);
 }
 
 .photos img:last-child {
-  top: 0;
-  left: 0;
-  z-index: 1;
+  top: 30px;
+  left: 70px;
   transform: rotate(6deg);
-  opacity: 0.85;
 }
+
 
 .photos img:hover {
   transform: scale(1.05) rotate(0deg);
@@ -240,3 +237,4 @@ body {
   }
 
 }
+
