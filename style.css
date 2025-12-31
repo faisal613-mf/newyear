@@ -130,6 +130,7 @@ body {
     border-image-slice:30;
     pointer-events:none;
     opacity:.6;
+   overflow: hidden;
 }
 /* Front: title stays centered, hint at bottom */
 .flip-front {
@@ -257,4 +258,5 @@ body {
     .photos img { width: 140px; }
     #finalWish { font-size: 1.35rem; white-space: nowrap; }
 }
+
 
