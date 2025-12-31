@@ -50,7 +50,7 @@ function startFinalWish() {
   finalPlayed = true;
 
   const wish = document.getElementById("finalWish");
-  const msg  = document.getElementById("finalMessage");
+  const msg = document.getElementById("finalMessage");
 
   // Save original content
   const headingText = wish.textContent;
@@ -62,7 +62,7 @@ function startFinalWish() {
 
   // Make visible before animating
   wish.style.visibility = "visible";
-  msg.style.visibility  = "visible";
+  msg.style.visibility = "visible";
   wish.style.opacity = "1";
 
   wish.classList.add("reveal");
@@ -75,9 +75,12 @@ function startFinalWish() {
     span.style.animationDelay = `${i * 0.05}s`;
     wish.appendChild(span);
   });
-setTimeout(() => {
-  wish.classList.add("glow");
-}, 1200
+
+  // ADDED: Corrected glow timeout
+  setTimeout(() => {
+    wish.classList.add("glow");
+  }, 1200); // This was the missing part!
+
   // Animate message
   setTimeout(() => {
     const lines = messageHTML.split("<br>");
@@ -102,7 +105,6 @@ setTimeout(() => {
     });
   }, 1200);
 }
-
 /* ===============================
    🃏 FLIP CARDS
 ================================ */
@@ -180,6 +182,7 @@ function fireworks() {
     setTimeout(() => spark.remove(), 1000);
   }
 }
+
 
 
 
