@@ -4,162 +4,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <title>For Musuu ❤️</title>
-<link rel="stylesheet" href="style.css?v=51">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- 🌸 INTRO -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <div class="intro" id="intro">
   <h1>Hey Musuu…</h1>
   <p>I made something just for you.</p>
   <span class="tap">Tap anywhere 💗</span>
 </div>
 
-<!-- 🌷 MAIN CONTENT -->
 <div id="content" style="display:none;">
+  <div class="slider">
 
-<div class="slider">
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <div class="flip-card">
+        <div class="card-frame"></div>
 
-  <!-- 🃏 Slide 1 -->
-  <div class="slide active">
-    <div class="flip-card">
-  <div class="card-frame"></div>
-  <div class="flip-inner">
+        <div class="flip-inner">
+          <div class="flip-front">
+            ✨ The Day Everything Changed ✨
+            <span class="hint">tap to reveal</span>
+          </div>
 
-
-        <div class="flip-front">
-          ✨ The Day Everything Changed ✨
-          <span class="hint">tap to reveal</span>
+          <div class="flip-back">
+            <div class="photos">
+              <img src="images/1.jpg">
+              <img src="images/1.jpg">
+            </div>
+            <p class="card-text">
+              The day you came into my life…<br>
+              I didn’t even realize it at first,<br>
+              but everything slowly started changing.
+            </p>
+          </div>
         </div>
+      </div>
 
-        <div class="flip-back">
-         <div class="photos">
-  <span class="sparkle">✨</span>
-  <img src="images/1.jpg">
-  <img src="images/1.jpg">
-</div>
-
-          <p class="card-text">
-            The day you came into my life…<br>
-            I didn’t even realize it at first,<br>
-            but everything slowly started changing.<br>
-            My smiles became easier, my days became lighter,<br>
-            and my world became more beautiful —<br>
-            simply because you were in it.
-          </p>
-        </div>
-
+      <div class="controls">
+        <button class="prev">← Previous</button>
+        <button class="next">Next →</button>
       </div>
     </div>
-    <button class="next">Next →</button>
-    <button class="prev">← Previous</button>
-  </div>
 
-  <!-- 🃏 Slide 2 -->
-  <div class="slide">
-    <div class="flip-card">
-  <div class="card-frame"></div>
-  <div class="flip-inner">
+    <!-- Slide 2 -->
+    <div class="slide">
+      <div class="flip-card">
+        <div class="card-frame"></div>
 
+        <div class="flip-inner">
+          <div class="flip-front">
+            💫 A Dream I Want Forever 💫
+            <span class="hint">tap to reveal</span>
+          </div>
 
-        <div class="flip-front">
-         💫 A Dream I Want Forever 💫
-          <span class="hint">tap to reveal</span>
+          <div class="flip-back">
+            <div class="photos">
+              <img src="images/1.jpg">
+              <img src="images/1.jpg">
+            </div>
+            <p class="card-text">
+              Out of everyone in this world,<br>
+              I get to call you mine…<br>
+              and one day soon,<br>
+              I’ll get to call you my wife.
+            </p>
+          </div>
         </div>
+      </div>
 
-        <div class="flip-back">
-          <div class="photos">
-  <span class="sparkle">✨</span>
-  <img src="images/1.jpg">
-  <img src="images/1.jpg">
-</div>
-
-          <p class="card-text">
-                    Sometimes I stop and think about us,<br>
-            and it honestly feels unreal.<br>
-            Out of everyone in this world,<br>
-            I get to call you mine…<br>
-            and one day soon,<br>
-            I’ll get to call you my wife.<br>
-            That thought alone makes every dream worth chasing.
-          </p>
-        </div>
-
+      <div class="controls">
+        <button class="prev">← Previous</button>
+        <button class="next">Next →</button>
       </div>
     </div>
-    <button class="next">Next →</button>
-    <button class="prev">← Previous</button>
-  </div>
 
-  <!-- 🃏 Slide 3 -->
-  <div class="slide">
-   <div class="flip-card">
-  <div class="card-frame"></div>
-  <div class="flip-inner">
-
-
-        <div class="flip-front">
-          🤍 My Safe Place 🤍
-          <span class="hint">tap to reveal</span>
+    <!-- Final Slide -->
+    <div class="slide">
+      <section class="final">
+        <p id="finalWish">Happy New Year My Love 💖</p>
+        <div id="finalMessage">
+          Another year with you is my biggest blessing.<br>
+          Forever yours,<br>
+          Faisal
         </div>
-
-        <div class="flip-back">
-          <div class="photos">
-  <span class="sparkle">✨</span>
-  <img src="images/1.jpg">
-  <img src="images/1.jpg">
-</div>
-
-          <p class="card-text">
-            
-            We’ve had our misunderstandings,<br>
-            we’ve had our tough days and quiet moments,<br>
-            but through everything,<br>
-            one thing has never changed —<br>
-            you have always been my favorite person,<br>
-            my comfort, my peace, my home.<br>
-            And you always will be.
-          </p>
-        </div>
-
-      </div>
+      </section>
     </div>
-    <button class="next">Next →</button>
-    <button class="prev">← Previous</button>
+
   </div>
-
-  <!-- 🎆 FINAL SLIDE -->
-  <div class="slide">
-    <section class="final">
-    <p id="finalWish" style="visibility:hidden;">Happy New Year My Love 💖</p>
-     <div id="finalMessage" style="visibility:hidden;">
-
-  Another year with you is my biggest blessing.<br>
-  Thank you for loving me, understanding me,<br>
-  standing by me, and choosing me — every single day.<br>
-  I'm grateful for every moment we've shared<br>
-  and for every memory we're yet to create.<br><br>
-  Forever yours,<br>
-  Faisal
-</div>
-
-    </section>
-  </div>
-
-</div>
 </div>
 
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
