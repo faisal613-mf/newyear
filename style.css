@@ -110,22 +110,23 @@ body {
 
 .flip-card {
     position: relative;
+   overflow: hidden; 
+    transform-style: preserve-3d;
 }
 
 .card-frame {
     position: absolute;
+    inset: -24px;                /* even padding on all sides */
+    border-radius: 38px;
 
-    top: -70px;     /* ⬅ makes top bigger */
-    left: -50px;
-    right: -50px;
-    bottom: -50px;
+    background: url("images/heart-frame.png") center / contain no-repeat;
 
-    background: url("images/heart-frame.png") center / 100% 100% no-repeat;
     pointer-events: none;
-    z-index: 10;
+    z-index: 5;
 
-    filter: drop-shadow(0 0 20px rgba(255,255,255,0.65));
+    filter: drop-shadow(0 0 16px rgba(255,255,255,0.7));
 }
+
 
 @keyframes framePulse {
     from { filter: drop-shadow(0 0 14px rgba(255,255,255,0.5)); }
@@ -133,7 +134,11 @@ body {
 }
 
 .card-frame {
-    animation: framePulse 2.8s ease-in-out infinite alternate;
+    transition: filter 0.4s ease;
+}
+
+.flip-card:hover .card-frame {
+    filter: drop-shadow(0 0 22px rgba(255,182,193,0.9));
 }
 
 
@@ -211,6 +216,7 @@ body {
     .flip-front { font-size: 1.2rem; }
     .card-text { font-size: 0.95rem; }
 }
+
 
 
 
