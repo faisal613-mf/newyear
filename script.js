@@ -53,19 +53,15 @@ function startFinalWish() {
   const wish = document.getElementById("finalWish");
   const msg  = document.getElementById("finalMessage");
 
-  // Capture text BEFORE showing anything
   const headingText = wish.textContent;
   const messageHTML = msg.innerHTML;
 
-  // Clear immediately while still hidden
   wish.textContent = "";
   msg.innerHTML = "";
 
-  // Now reveal containers
   wish.style.visibility = "visible";
   msg.style.visibility  = "visible";
 
-  // --- Heading animation ---
   wish.classList.add("reveal");
   setTimeout(() => wish.classList.add("glow"), 1200);
 
@@ -77,7 +73,6 @@ function startFinalWish() {
     wish.appendChild(span);
   });
 
-  // --- Message animation ---
   setTimeout(() => {
     const lines = messageHTML.split("<br>");
     let delay = 0;
@@ -112,8 +107,11 @@ document.querySelectorAll(".flip-card").forEach(card => {
 });
 
 /* ===============================
-   💖 HEART EFFECT
+   💖 HEART EFFECT (FIXED)
 ================================ */
+const vw = window.innerWidth;
+const vh = window.innerHeight;
+
 function burstHearts() {
   for (let i = 0; i < 20; i++) {
     const heart = document.createElement("div");
@@ -121,8 +119,8 @@ function burstHearts() {
     heart.className = "burst-heart";
     document.body.appendChild(heart);
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = Math.random() * 100 + "vh";
+    heart.style.left = Math.random() * vw + "px";
+    heart.style.top  = Math.random() * vh + "px";
 
     setTimeout(() => heart.remove(), 1000);
   }
@@ -135,7 +133,7 @@ const music = document.getElementById("bgMusic");
 let musicStarted = false;
 
 document.body.addEventListener("click", () => {
-  if (!musicStarted) {
+  if (!musicStarted && music) {
     music.volume = 0;
     music.play();
     musicStarted = true;
@@ -150,7 +148,7 @@ document.body.addEventListener("click", () => {
 });
 
 /* ===============================
-   🎆 FIREWORKS
+   🎆 FIREWORKS (FIXED)
 ================================ */
 let fireworksStarted = false;
 
@@ -166,21 +164,12 @@ function fireworks() {
     spark.className = "firework";
     document.body.appendChild(spark);
 
-    const x = 50 + Math.random() * 30 - 15;
-    const y = 50 + Math.random() * 30 - 15;
+    const x = vw / 2 + Math.random() * 300 - 150;
+    const y = vh / 2 + Math.random() * 300 - 150;
 
-    spark.style.left = x + "vw";
-    spark.style.top = y + "vh";
+    spark.style.left = x + "px";
+    spark.style.top  = y + "px";
 
     setTimeout(() => spark.remove(), 1000);
   }
 }
-document.querySelectorAll(".flip-card").forEach(card => {
-  card.addEventListener("click", () => {
-    const text = card.querySelector(".card-text");
-    if (text) {
-      text.classList.add("show");
-      setTimeout(() => text.classList.add("glow"), 800);
-    }
-  });
-});
