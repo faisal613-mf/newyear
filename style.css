@@ -288,3 +288,22 @@ body {
     justify-content: flex-start;
   }
 }
+/* ===============================
+   🛠 MOBILE VIEWPORT FIX
+================================ */
+
+@media (max-width: 600px) {
+  .intro,
+  .slider,
+  .slide {
+    height: 100svh;
+    min-height: 100svh;
+  }
+
+  .slide {
+    justify-content: flex-start;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
