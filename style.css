@@ -174,12 +174,17 @@ body {
 }
 
 .photos img {
-    width: 120px;
+    width: 160px;
+    max-width: 45vw;
     height: auto;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 3px solid white;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
+@media (max-width: 380px) {
+    .photos img { width: 140px; }
+}
+
 
 .next, .prev {
     padding: 12px 30px;
@@ -252,4 +257,5 @@ body {
         padding: 10px 20px;
     }
 }
+
 
