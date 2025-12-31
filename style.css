@@ -273,3 +273,13 @@ body {
     line-height: 1.55;
   }
 }
+
+p, h1, h2, h3, span {
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+}
+.slide {
+    padding-left: 16px;
+    padding-right: 16px;
+}
