@@ -434,3 +434,49 @@ body {
   z-index: 1;
   opacity: 0.6;
 }
+
+.flip-card::before {
+  content: "";
+  position: absolute;
+  /* Adjust these values to make the frame bigger or smaller */
+  top: -20px;
+  left: -10px;
+  right: -10px;
+  bottom: -20px;
+  
+  /* The Heart Pattern */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+  background-size: 20px 20px;
+  background-repeat: round;
+  
+  /* This creates the "hollow" middle so you only see the border */
+  -webkit-mask-image: linear-gradient(black, black), linear-gradient(black, black);
+  -webkit-mask-clip: content-box, border-box;
+  -webkit-mask-composite: source-out;
+  mask-composite: exclude;
+  
+  border: 20px solid transparent; /* This controls the thickness of the heart border */
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+/* Optional: Add a soft glow to the heart border */
+.flip-card::before {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+.flip-card::after {
+  content: '💗';
+  position: absolute;
+  top: -40px;
+  left: 20px;
+  font-size: 40px;
+  opacity: 0.6;
+  filter: blur(1px);
+  animation: softFloat 4s ease-in-out infinite;
+}
+
+@keyframes softFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.1); }
+}
