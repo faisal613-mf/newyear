@@ -169,11 +169,14 @@ body {
 }
 
 .card-text {
+    white-space: normal;
+    word-break: keep-all;
     font-size: 1.05rem;
     line-height: 1.7;
     text-shadow: 0 0 8px rgba(255,255,255,.6),
                  0 0 14px rgba(255,182,193,.45);
 }
+
 
 .hint {
     position: absolute;
@@ -199,7 +202,7 @@ body {
 .photos img {
     /* Use 'contain' to see the whole image without it being cut */
     width: 45%; 
-    height: 180px; 
+    height: 200px; 
     object-fit: contain; 
     
     background: #ffffff;
@@ -282,8 +285,8 @@ body {
         height: 480px; /* Adjust height for smaller screens */
     }
     .photos img {
-        height: 140px; /* Slightly smaller images on mobile */
-        width: 44%;
+        height: 160px; /* Slightly smaller images on mobile */
+        width: 46%;
     }
     .card-text {
         font-size: 0.9rem; /* Smaller text so it doesn't overflow */
@@ -304,6 +307,7 @@ body {
 .flip-back::after {
     z-index: 1;
 }
+
 
 
 
