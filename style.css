@@ -104,17 +104,21 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* THE HEART BORDER FRAME */
-.flip-front::after, .flip-back::after {
-    content: "";
+/* ===============================
+   💗 REAL HEART FRAME (IMAGE)
+================================ */
+
+.flip-card {
+    position: relative;
+}
+
+.card-frame {
     position: absolute;
-    inset: -12px;
-    border: 22px solid transparent;
-    border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='white' d='M15 26.5l-1.45-1.32C8.4 20.36 5 17.28 5 13.5 5 10.42 7.42 8 10.5 8c1.74 0 3.41.81 4.5 2.09C16.09 8.81 17.76 8 19.5 8 22.58 8 25 10.42 25 13.5c0 3.78-3.4 6.86-8.55 11.54L15 26.5z'/%3E%3C/svg%3E");
-    border-image-slice: 30;
-    border-image-repeat: round;
+    inset: -26px;
+    background: url("images/heart-frame.png") center / contain no-repeat;
     pointer-events: none;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+    z-index: 5;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
 }
 
 .flip-back {
@@ -191,3 +195,4 @@ body {
     .flip-front { font-size: 1.2rem; }
     .card-text { font-size: 0.95rem; }
 }
+
