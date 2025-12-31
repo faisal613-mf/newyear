@@ -125,7 +125,14 @@ body {
     overflow: hidden;
 }
 
-.flip-back { transform: rotateY(180deg); }
+.flip-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers photos and text vertically */
+    align-items: center;
+    padding: 20px; /* Reduced padding to give photos more room */
+}
 
 /* Heart Frame */
 .flip-front::after,
@@ -183,22 +190,32 @@ body {
 .photos {
     display: flex;
     justify-content: center;
-    gap: 16px;
-    margin-bottom: 20px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    width: 100%;
 }
 
 .photos img {
-    width: 135px;
-    height: auto;
-    max-height: 170px;
-    object-fit: contain;
+    /* Use 'contain' to see the whole image without it being cut */
+    width: 45%; 
+    height: 180px; 
+    object-fit: contain; 
+    
+    background: #ffffff;
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
 
-    background: white;
-    padding: 6px;
-    border-radius: 14px;
-
-    box-shadow: 0 12px 25px rgba(0,0,0,0.25),
-                0 0 12px rgba(255,182,193,0.35);
+/* Sparkle effect inside photos div */
+.sparkle {
+    position: absolute;
+    font-size: 1.5rem;
+    pointer-events: none;
+    z-index: 5;
 }
 
 
@@ -261,13 +278,21 @@ body {
    📱 MOBILE
 ================================ */
 @media (max-width: 600px) {
+    .flip-card { 
+        height: 480px; /* Adjust height for smaller screens */
+    }
     .photos img {
-        width: 115px;
-        max-height: 150px;
+        height: 140px; /* Slightly smaller images on mobile */
+        width: 44%;
+    }
+    .card-text {
+        font-size: 0.9rem; /* Smaller text so it doesn't overflow */
+        line-height: 1.5;
+    }
+    .title-text {
+        font-size: 1.3rem;
     }
 }
-
-
 
 .flip-front > *,
 .flip-back > * {
@@ -279,6 +304,7 @@ body {
 .flip-back::after {
     z-index: 1;
 }
+
 
 
 
