@@ -45,7 +45,6 @@ document.querySelectorAll(".prev").forEach(btn => {
    🧡 FINAL WISH ANIMATION
 ================================ */
 let finalPlayed = false;
-
 function startFinalWish() {
   if (finalPlayed) return;
   finalPlayed = true;
@@ -53,19 +52,22 @@ function startFinalWish() {
   const wish = document.getElementById("finalWish");
   const msg  = document.getElementById("finalMessage");
 
+  // Save original content
   const headingText = wish.textContent;
   const messageHTML = msg.innerHTML;
 
-  wish.innerHTML = "&nbsp;";
-msg.innerHTML = "&nbsp;";
+  // Prepare containers
+  wish.innerHTML = "";
+  msg.innerHTML = "";
 
-
+  // Make visible before animating
   wish.style.visibility = "visible";
   msg.style.visibility  = "visible";
+  wish.style.opacity = "1";
 
   wish.classList.add("reveal");
-  setTimeout(() => wish.classList.add("glow"), 1200);
 
+  // Animate heading
   [...headingText].forEach((char, i) => {
     const span = document.createElement("span");
     span.textContent = char === " " ? "\u00A0" : char;
@@ -74,20 +76,22 @@ msg.innerHTML = "&nbsp;";
     wish.appendChild(span);
   });
 
+  // Animate message
   setTimeout(() => {
     const lines = messageHTML.split("<br>");
     let delay = 0;
 
     lines.forEach(line => {
       const lineDiv = document.createElement("div");
+      const cleanLine = line.trim();
 
-      [...line].forEach(char => {
+      [...cleanLine].forEach(char => {
         const span = document.createElement("span");
         span.textContent = char === " " ? "\u00A0" : char;
         span.className = "letter";
         span.style.opacity = "0";
         span.style.animation = `letterAppear 0.6s ease forwards`;
-        span.style.animationDelay = `${delay * 0.07}s`;
+        span.style.animationDelay = `${delay * 0.04}s`;
         delay++;
         lineDiv.appendChild(span);
       });
@@ -174,4 +178,5 @@ function fireworks() {
     setTimeout(() => spark.remove(), 1000);
   }
 }
+
 
