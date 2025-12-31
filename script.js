@@ -58,54 +58,61 @@ document.querySelectorAll(".flip-card").forEach(card => {
 ================================ */
 let finalPlayed = false;
 function startFinalWish() {
-    if (finalPlayed) return;
-    finalPlayed = true;
+  if (finalPlayed) return;
+  finalPlayed = true;
 
-    const wish = document.getElementById("finalWish");
-    const msg = document.getElementById("finalMessage");
-    const headingText = wish.textContent;
-    const messageHTML = msg.innerHTML;
+  const wish = document.getElementById("finalWish");
+  const msg = document.getElementById("finalMessage");
 
-    wish.innerHTML = "";
-    msg.innerHTML = "";
-    wish.style.visibility = "visible";
-    msg.style.visibility = "visible";
-    wish.classList.add("reveal");
+  // Store the text before clearing it
+  const headingText = wish.textContent;
+  const messageHTML = msg.innerHTML;
 
-    // Fast Heading
-    [...headingText].forEach((char, i) => {
+  // Clear the containers
+  wish.innerHTML = "";
+  msg.innerHTML = "";
+
+  // Make them visible
+  wish.style.visibility = "visible";
+  msg.style.visibility = "visible";
+  wish.style.opacity = "1"; // Ensure opacity is up
+
+  wish.classList.add("reveal");
+
+  // Type out the heading
+  [...headingText].forEach((char, i) => {
+    const span = document.createElement("span");
+    span.textContent = char;
+    span.className = "letter";
+    span.style.animationDelay = `${i * 0.05}s`;
+    wish.appendChild(span);
+  });
+
+  // Type out the message
+  setTimeout(() => {
+    const lines = messageHTML.split("<br>");
+    let delay = 0;
+
+    lines.forEach(line => {
+      const lineDiv = document.createElement("div");
+      // Strip extra whitespace from the line
+      const cleanLine = line.trim();
+      
+      [...cleanLine].forEach(char => {
         const span = document.createElement("span");
         span.textContent = char === " " ? "\u00A0" : char;
         span.className = "letter";
-        span.style.animation = "letterAppear 0.3s ease forwards";
-        span.style.animationDelay = `${i * 0.03}s`;
-        wish.appendChild(span);
+        span.style.opacity = "0";
+        span.style.animation = `letterAppear 0.6s ease forwards`;
+        span.style.animationDelay = `${delay * 0.04}s`; // Slightly faster for long messages
+        delay++;
+        lineDiv.appendChild(span);
+      });
+      msg.appendChild(lineDiv);
+      msg.appendChild(document.createElement("br")); // Re-add the line break
     });
-
-    setTimeout(() => { wish.classList.add("glow"); }, 500);
-
-    // Ultra Fast Message
-    setTimeout(() => {
-        const lines = messageHTML.split("<br>");
-        let totalCharDelay = 0;
-
-        lines.forEach(line => {
-            const lineDiv = document.createElement("div");
-            [...line.trim()].forEach(char => {
-                const span = document.createElement("span");
-                span.textContent = char === " " ? "\u00A0" : char;
-                span.className = "letter";
-                span.style.opacity = "0";
-                span.style.animation = "letterAppear 0.3s ease forwards";
-                span.style.animationDelay = `${totalCharDelay * 0.015}s`;
-                totalCharDelay++;
-                lineDiv.appendChild(span);
-            });
-            msg.appendChild(lineDiv);
-        });
-    }, 600);
+  }, 1500);
 }
-
 /* ===============================
    🎆 EFFECTS (HEARTS & FIREWORKS)
 ================================ */
@@ -167,3 +174,4 @@ function startMusic() {
         }).catch(() => {});
     }
 }
+
