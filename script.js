@@ -48,18 +48,17 @@ function startFinalWish() {
     const msg = document.getElementById("finalMessage");
 
     const text = wish.getAttribute("data-text");
+
     wish.innerHTML = "";
     wish.style.visibility = "visible";
-
-    // Lock layout width before animation
     wish.style.whiteSpace = "nowrap";
 
-    text.split("").forEach((char, i) => {
+    [...text].forEach((char, i) => {
         const span = document.createElement("span");
         span.textContent = char === " " ? "\u00A0" : char;
         span.style.display = "inline-block";
         span.style.animation = "letterAppear .4s ease forwards";
-        span.style.animationDelay = `${i * 0.04}s`;
+        span.style.animationDelay = `${i * .04}s`;
         wish.appendChild(span);
     });
 
@@ -71,6 +70,7 @@ function startFinalWish() {
         setInterval(burstHearts, 1600);
     }, 1200);
 }
+
 
 /* ================= EFFECTS ================= */
 
@@ -131,5 +131,6 @@ function startMusic() {
         });
     }
 }
+
 
 
