@@ -200,7 +200,7 @@ body {
 ================================ */
 #finalWish,
 #finalMessage {
-  visibility: hidden;
+  visibility: visible;
 }
 
 #finalWish {
@@ -277,3 +277,4 @@ body {
     font-size: 1.05rem;
   }
 }
+
