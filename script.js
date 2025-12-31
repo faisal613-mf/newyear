@@ -46,21 +46,20 @@ function startFinalWish() {
 
     const wish = document.getElementById("finalWish");
     const msg = document.getElementById("finalMessage");
-    msg.style.wordBreak = "keep-all";
-    msg.style.whiteSpace = "normal";
 
-
-    const text = wish.textContent;
+    const text = wish.getAttribute("data-text");
     wish.innerHTML = "";
     wish.style.visibility = "visible";
 
-    [...text].forEach((char, i) => {
+    // Lock layout width before animation
+    wish.style.whiteSpace = "nowrap";
+
+    text.split("").forEach((char, i) => {
         const span = document.createElement("span");
         span.textContent = char === " " ? "\u00A0" : char;
-        span.className = "letter";
         span.style.display = "inline-block";
         span.style.animation = "letterAppear .4s ease forwards";
-        span.style.animationDelay = `${i * .04}s`;
+        span.style.animationDelay = `${i * 0.04}s`;
         wish.appendChild(span);
     });
 
@@ -132,4 +131,5 @@ function startMusic() {
         });
     }
 }
+
 
