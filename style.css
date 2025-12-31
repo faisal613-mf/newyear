@@ -480,3 +480,34 @@ body {
   0%, 100% { transform: translateY(0) scale(1); }
   50% { transform: translateY(-15px) scale(1.1); }
 }
+.flip-front, .flip-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 25px;
+    backface-visibility: hidden;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* --- HEART BORDER START --- */
+    border: 18px solid transparent; /* Thickness of the heart frame */
+    border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='white' d='M15 26.5l-1.45-1.32C8.4 20.36 5 17.28 5 13.5 5 10.42 7.42 8 10.5 8c1.74 0 3.41.81 4.5 2.09C16.09 8.81 17.76 8 19.5 8 22.58 8 25 10.42 25 13.5c0 3.78-3.4 6.86-8.55 11.54L15 26.5z'/%3E%3C/svg%3E");
+    border-image-slice: 30; /* Matches SVG size for perfect clarity */
+    border-image-repeat: round; /* Ensures hearts aren't cut in half */
+    /* --- HEART BORDER END --- */
+    
+    box-sizing: border-box;
+}
+
+/* Add a subtle glow to the heart frame to match the vibe */
+.flip-front::before, .flip-back::before {
+    content: "";
+    position: absolute;
+    inset: -18px; /* Matches the border thickness */
+    border-radius: 35px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    z-index: -1;
+}
