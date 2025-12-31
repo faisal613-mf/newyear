@@ -198,14 +198,11 @@ body {
 /* ===============================
    ✨ FINAL WISH ANIMATION
 ================================ */
-
-/* Hide before animation to avoid flash */
 #finalWish,
 #finalMessage {
   visibility: hidden;
 }
 
-/* Heading */
 #finalWish {
   font-size: 28px;
   margin-bottom: 25px;
@@ -213,7 +210,6 @@ body {
   transform: translateY(25px);
 }
 
-/* Fade + Rise */
 #finalWish.reveal {
   animation: reveal 1.6s ease forwards;
 }
@@ -225,14 +221,12 @@ body {
   }
 }
 
-/* Glow */
 #finalWish.glow {
   text-shadow:
     0 0 8px rgba(255,255,255,0.6),
     0 0 18px rgba(255,182,193,0.9);
 }
 
-/* Per-letter effect */
 .letter {
   display: inline-block;
   animation: letterJiggle 0.6s ease;
@@ -245,20 +239,31 @@ body {
   100% { transform: scale(1); }
 }
 
-@keyframes letterAppear {
-  0% { opacity: 0; transform: scale(0.6); }
-  50% { opacity: 1; transform: scale(1.25); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
 #finalMessage div {
   text-align: center;
 }
 
 /* ===============================
-   📱 MOBILE
+   📱 MOBILE STABILITY (ONLY FIX)
 ================================ */
 @media (max-width: 600px) {
+  .final,
+  .flip-back {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .final p,
+  .flip-back p {
+    max-width: 420px;
+    margin: auto;
+    line-height: 1.6;
+  }
+
+  .final h1 {
+    font-size: 26px;
+  }
+
   .flip-card {
     width: 94%;
     min-height: 540px;
@@ -270,51 +275,5 @@ body {
 
   .flip-back p {
     font-size: 1.05rem;
-    line-height: 1.55;
-  }
-}
-/* ===============================
-   🧩 MOBILE TEXT FIX (CLEANED)
-================================ */
-
-.slide {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.final {
-  max-width: 92%;
-  margin: auto;
-}
-
-.slide,
-.flip-back p,
-.final,
-#finalMessage {
-  max-width: 92%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-p, h1, h2, h3 {
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-
-/* ===============================
-   🔒 FINAL MOBILE TEXT LOCK
-================================ */
-
-@media (max-width: 600px) {
-
-  .final,
-  #finalMessage,
-  .flip-back p {
-    width: 88vw;
-    max-width: 88vw;
-  }
-
-  h1, p {
-    white-space: normal;
   }
 }
