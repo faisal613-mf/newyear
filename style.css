@@ -1,222 +1,126 @@
-/* ===============================
-   🌸 GLOBAL RESET & BASE
-================================ */
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
-    color: white;
-    text-align: center;
-    overflow-x: hidden;
-    min-height: 100vh;
+  background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  height: 100vh;
 }
 
-/* ===============================
-   💌 INTRO SCREEN
-================================ */
+/* Intro */
 .intro {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
-.tap {
-    margin-top: 20px;
-    opacity: 0.8;
-    animation: pulse 1.5s infinite;
-}
+.tap { margin-top: 20px; }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-/* ===============================
-   🎬 SLIDER & SLIDES
-================================ */
+/* Slider */
 .slider {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slide {
-    position: absolute;
-    inset: 0;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.slide.active {
-    display: flex;
-}
+.slide.active { display: flex; }
 
-/* ===============================
-   🪄 FLIP CARD + HEART FRAME
-================================ */
+/* Card */
 .flip-card {
-    width: 90%;
-    max-width: 700px;
-    min-height: 480px;
-    perspective: 1200px;
-    cursor: pointer;
-    margin-bottom: 30px;
-    position: relative;
+  width: 320px;
+  height: 480px;
+  perspective: 1200px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .flip-inner {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.flip-card.active .flip-inner {
-    transform: rotateY(180deg);
+.flip-card.active .flip-inner { transform: rotateY(180deg); }
+
+/* Frame */
+.card-frame {
+  position: absolute;
+  inset: -32px;
+  background: url("images/heart-frame.png") center / contain no-repeat;
+  z-index: 10;
+  pointer-events: none;
+  filter: drop-shadow(0 0 18px rgba(255,255,255,0.7));
 }
 
+/* Faces */
 .flip-front, .flip-back {
-    position: absolute;
-    inset: 0;
-    border-radius: 25px;
-    backface-visibility: hidden;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-/* ===============================
-   💗 REAL HEART FRAME (IMAGE)
-================================ */
+.flip-back { transform: rotateY(180deg); }
 
-.flip-card {
-    position: relative;
-   overflow: hidden; 
-    transform-style: preserve-3d;
-}
-
-.card-frame {
-    position: absolute;
-    inset: -24px;                /* even padding on all sides */
-    border-radius: 38px;
-
-    background: url("images/heart-frame.png") center / contain no-repeat;
-
-    pointer-events: none;
-    z-index: 5;
-
-    filter: drop-shadow(0 0 16px rgba(255,255,255,0.7));
-}
-
-
-@keyframes framePulse {
-    from { filter: drop-shadow(0 0 14px rgba(255,255,255,0.5)); }
-    to   { filter: drop-shadow(0 0 26px rgba(255,182,193,0.9)); }
-}
-
-.card-frame {
-    transition: filter 0.4s ease;
-}
-
-.flip-card:hover .card-frame {
-    filter: drop-shadow(0 0 22px rgba(255,182,193,0.9));
-}
-
-
-.flip-back {
-    transform: rotateY(180deg);
-}
-
-/* ===============================
-   🖼️ PHOTOS & BUTTONS
-================================ */
-.photos {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
+/* Photos */
+.photos { display: flex; gap: 10px; margin-bottom: 15px; }
 
 .photos img {
-    width: 120px;
-    border-radius: 10px;
-    border: 3px solid white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  width: 90px;
+  height: 120px;
+  border-radius: 10px;
+  border: 2px solid white;
+  box-shadow: 0 0 12px rgba(255,255,255,0.7);
 }
+
+/* Controls */
+.controls { margin-top: 30px; }
 
 .next, .prev {
-    padding: 10px 25px;
-    border-radius: 20px;
-    border: none;
-    background: rgba(255, 255, 255, 0.3);
-    color: white;
-    cursor: pointer;
-    margin: 5px;
-    transition: 0.3s;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255,255,255,0.4);
+  color: white;
+  cursor: pointer;
 }
 
-.next:hover { background: rgba(255, 255, 255, 0.5); }
+/* Final */
+.final { margin-top: 20px; }
 
-/* ===============================
-   ✨ FINAL MESSAGE & EFFECTS
-================================ */
-#finalWish { font-size: 2rem; margin-bottom: 20px; opacity: 0; }
-#finalWish.reveal { opacity: 1; transition: 1s; }
-#finalWish.glow { text-shadow: 0 0 15px #fff, 0 0 30px #ffb6c1; }
+#finalWish { font-size: 1.8rem; opacity: 0; }
+#finalMessage { opacity: 0; }
 
-.letter { display: inline-block; }
-
-@keyframes letterAppear {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+#finalWish.show, #finalMessage.show {
+  opacity: 1;
+  transition: 1.5s;
 }
-
-.firework-spark {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-}
-
-.burst-heart {
-    position: fixed;
-    pointer-events: none;
-    animation: heartOut 1s ease-out forwards;
-}
-
-@keyframes heartOut {
-    to { transform: scale(2) translateY(-50px); opacity: 0; }
-}
-
-/* ===============================
-   📱 MOBILE STABILITY
-================================ */
-@media (max-width: 600px) {
-    .flip-card { min-height: 520px; }
-    .flip-front { font-size: 1.2rem; }
-    .card-text { font-size: 0.95rem; }
-}
-
-
-
-
