@@ -274,12 +274,20 @@ body {
   }
 }
 
-p, h1, h2, h3, span {
-    word-break: normal;
-    overflow-wrap: break-word;
-    hyphens: none;
+/* ===============================
+   🧩 MOBILE TEXT FIX (NEW - SAFE)
+================================ */
+* {
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
+
 .slide {
-    padding-left: 16px;
-    padding-right: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.final {
+  max-width: 92%;
+  margin: auto;
 }
