@@ -110,12 +110,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;   /* default center */
+    justify-content: center;
     padding: 35px 40px 45px;
     text-align: center;
     backface-visibility: hidden;
+    overflow: hidden;
 }
-
 
 .flip-back { transform: rotateY(180deg); }
 
@@ -130,27 +130,18 @@ body {
     border-image-slice:30;
     pointer-events:none;
     opacity:.6;
-   overflow: hidden;
-}
-/* Front: title stays centered, hint at bottom */
-.flip-front {
-    justify-content: center;
 }
 
+/* Front */
 .flip-front .hint {
     position: absolute;
     bottom: 22px;
 }
 
-/* Back: keep photos + text centered together */
-.flip-back {
-    justify-content: center;
-}
-
+/* Back */
 .flip-back .photos {
     margin-bottom: 20px;
 }
-
 
 /* ===============================
    🧡 CARD CONTENT
@@ -258,5 +249,6 @@ body {
     .photos img { width: 140px; }
     #finalWish { font-size: 1.35rem; white-space: nowrap; }
 }
+
 
 
