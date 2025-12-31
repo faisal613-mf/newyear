@@ -209,3 +209,31 @@ body {
     }
 }
 
+/* Center front title & keep hint bottom */
+.flip-front {
+    position: relative;
+    text-align: center;
+}
+
+.hint {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    opacity: 0.8;
+    animation: pulse 1.5s infinite;
+}
+
+/* Make card text glow */
+.card-text {
+    text-shadow: 0 0 8px rgba(255,255,255,0.6),
+                 0 0 16px rgba(255,182,193,0.6);
+}
+@media (max-width: 600px) {
+    #finalWish {
+        white-space: nowrap;
+        font-size: 1.45rem;
+    }
+}
+
