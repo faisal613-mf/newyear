@@ -75,7 +75,9 @@ function startFinalWish() {
     span.style.animationDelay = `${i * 0.05}s`;
     wish.appendChild(span);
   });
-
+setTimeout(() => {
+  wish.classList.add("glow");
+}, 1200
   // Animate message
   setTimeout(() => {
     const lines = messageHTML.split("<br>");
@@ -178,5 +180,6 @@ function fireworks() {
     setTimeout(() => spark.remove(), 1000);
   }
 }
+
 
 
