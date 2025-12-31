@@ -189,3 +189,23 @@ body {
     .flip-front { font-size: 1.2rem; }
     .card-text { font-size: .95rem; }
 }
+
+.card-text {
+    text-shadow: 0 0 8px rgba(255,255,255,0.6),
+                 0 0 16px rgba(255,182,193,0.6);
+}
+.flip-front { position: relative; }
+
+.hint {
+    position: absolute;
+    bottom: 16px;
+    opacity: 0.8;
+    font-size: 0.85rem;
+}
+@media (max-width: 600px) {
+    #finalWish {
+        white-space: nowrap;
+        font-size: 1.45rem;
+    }
+}
+
