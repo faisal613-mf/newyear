@@ -45,7 +45,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 0;
 }
 
 .slide.active {
@@ -59,7 +58,6 @@ body {
   width: 90%;
   max-width: 700px;
   min-height: 460px;
-  height: auto;
   perspective: 1200px;
   cursor: pointer;
   margin-bottom: 40px;
@@ -108,8 +106,6 @@ body {
   transform: rotateY(180deg);
   flex-direction: column;
   padding: 24px;
-  padding-top: 24px;
-  position: relative;
   z-index: 2;
 }
 
@@ -132,23 +128,8 @@ body {
   width: 135px;
   border-radius: 12px;
   transition: 0.3s ease;
-   box-shadow: 0 12px 25px rgba(0,0,0,0.18);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.18);
 }
-.photos img::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  box-shadow: 0 0 25px rgba(255,255,255,0.45);
-  opacity: 0;
-  transition: 0.3s ease;
-  pointer-events: none;
-}
-
-.photos img:hover::after {
-  opacity: 1;
-}
-
 
 .photos img:first-child {
   transform: rotate(-6deg);
@@ -193,6 +174,9 @@ body {
 ================================ */
 .final {
   padding: 80px 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* ===============================
@@ -212,22 +196,69 @@ body {
 }
 
 /* ===============================
-   ✨ GLOW
+   ✨ FINAL WISH ANIMATION
 ================================ */
-.glow {
-  animation: glowPulse 2.5s ease-in-out infinite alternate;
+
+/* Hide before animation to avoid flash */
+#finalWish,
+#finalMessage {
+  visibility: hidden;
 }
 
-@keyframes glowPulse {
-  from { text-shadow: 0 0 10px rgba(255,255,255,0.4); }
-  to   { text-shadow: 0 0 25px rgba(255,255,255,0.9); }
+/* Heading */
+#finalWish {
+  font-size: 28px;
+  margin-bottom: 25px;
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+/* Fade + Rise */
+#finalWish.reveal {
+  animation: reveal 1.6s ease forwards;
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glow */
+#finalWish.glow {
+  text-shadow:
+    0 0 8px rgba(255,255,255,0.6),
+    0 0 18px rgba(255,182,193,0.9);
+}
+
+/* Per-letter effect */
+.letter {
+  display: inline-block;
+  animation: letterJiggle 0.6s ease;
+}
+
+@keyframes letterJiggle {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.25); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+@keyframes letterAppear {
+  0% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.25); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+#finalMessage div {
+  text-align: center;
 }
 
 /* ===============================
    📱 MOBILE
 ================================ */
 @media (max-width: 600px) {
-
   .flip-card {
     width: 94%;
     min-height: 540px;
@@ -241,13 +272,4 @@ body {
     font-size: 1.05rem;
     line-height: 1.55;
   }
-
 }
-
-
-
-
-
-
-
-
