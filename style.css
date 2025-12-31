@@ -168,27 +168,29 @@ body {
     letter-spacing: 2px;
 }
 
+
 /* ===============================
-   🖼 PHOTOS
+   🖼 PHOTOS (Final Clean Version)
 ================================ */
 .photos {
     display: flex;
+    justify-content: center;
     gap: 18px;
-    padding: 10px 0 5px;
+    margin-bottom: 22px;
 }
 
-
 .photos img {
-    width: 155px;
+    width: 150px;
     max-width: 44vw;
     height: auto;
     border-radius: 14px;
     border: 3px solid rgba(255,255,255,0.95);
     box-shadow:
-        0 12px 28px rgba(0,0,0,0.28),
-        0 0 15px rgba(255,182,193,0.35);
+        0 10px 22px rgba(0,0,0,0.25),
+        0 0 12px rgba(255,182,193,0.35);
     background: rgba(255,255,255,0.12);
 }
+
 
 
 /* ===============================
@@ -257,6 +259,17 @@ body {
     #finalWish { font-size: 1.35rem; white-space: nowrap; }
 }
 
+
+.flip-front > *,
+.flip-back > * {
+    position: relative;
+    z-index: 2;
+}
+
+.flip-front::after,
+.flip-back::after {
+    z-index: 1;
+}
 
 
 
