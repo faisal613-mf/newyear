@@ -2,6 +2,7 @@ const intro = document.getElementById("intro");
 const content = document.getElementById("content");
 const slides = document.querySelectorAll(".slide");
 let current = 0;
+let finalPlayed = false;
 
 intro.addEventListener("click", () => {
     intro.style.display = "none";
@@ -10,32 +11,25 @@ intro.addEventListener("click", () => {
 });
 
 document.querySelectorAll(".next").forEach(btn => {
-    btn.addEventListener("click", () => {
-        slides[current].classList.remove("active");
-        current++;
-
-        if (current < slides.length) {
-            slides[current].classList.add("active");
-            burstHearts();
-        }
-
-        if (current === slides.length - 1) {
-            startFinalWish();
-            setInterval(fireworks, 1000);
-        }
-    });
+    btn.addEventListener("click", () => goSlide(1));
 });
 
 document.querySelectorAll(".prev").forEach(btn => {
-    btn.addEventListener("click", () => {
-        if (current > 0) {
-            slides[current].classList.remove("active");
-            current--;
-            slides[current].classList.add("active");
-            burstHearts();
-        }
-    });
+    btn.addEventListener("click", () => goSlide(-1));
 });
+
+function goSlide(dir) {
+    slides[current].classList.remove("active");
+    current += dir;
+
+    if (current < 0) current = 0;
+    if (current >= slides.length) current = slides.length - 1;
+
+    slides[current].classList.add("active");
+    burstHearts();
+
+    if (current === slides.length - 1) startFinalWish();
+}
 
 document.querySelectorAll(".flip-card").forEach(card => {
     card.addEventListener("click", () => {
@@ -44,7 +38,7 @@ document.querySelectorAll(".flip-card").forEach(card => {
     });
 });
 
-let finalPlayed = false;
+/* ================= FINAL ================= */
 
 function startFinalWish() {
     if (finalPlayed) return;
@@ -53,38 +47,33 @@ function startFinalWish() {
     const wish = document.getElementById("finalWish");
     const msg = document.getElementById("finalMessage");
 
-    // Clear and Show
-    const headingText = wish.textContent;
+    const text = wish.textContent;
     wish.innerHTML = "";
     wish.style.visibility = "visible";
-    wish.style.opacity = "1";
-    msg.style.visibility = "visible";
 
-    // 1. Animate Heading
-    [...headingText].forEach((char, i) => {
+    [...text].forEach((char, i) => {
         const span = document.createElement("span");
         span.textContent = char === " " ? "\u00A0" : char;
         span.className = "letter";
         span.style.display = "inline-block";
-        span.style.animation = "letterAppear .5s ease forwards";
-        span.style.animationDelay = `${i * 0.05}s`;
+        span.style.animation = "letterAppear .4s ease forwards";
+        span.style.animationDelay = `${i * .04}s`;
         wish.appendChild(span);
     });
 
-    // 2. Reveal Message and Start Continuous Celebration
     setTimeout(() => {
         wish.classList.add("glow");
-        msg.style.transition = "opacity 2s ease";
+        msg.style.visibility = "visible";
         msg.style.opacity = "1";
-        
-        // Intensify Fireworks for the finale
-        setInterval(fireworks, 600); 
-        setInterval(burstHearts, 1500);
-    }, 1500);
+        setInterval(fireworks, 900);
+        setInterval(burstHearts, 1600);
+    }, 1200);
 }
 
+/* ================= EFFECTS ================= */
+
 function burstHearts() {
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 12; i++) {
         const heart = document.createElement("div");
         heart.innerHTML = "❤";
         heart.className = "burst-heart";
@@ -102,7 +91,7 @@ function fireworks() {
     const x = Math.random()*window.innerWidth;
     const y = Math.random()*window.innerHeight*.5;
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 25; i++) {
         const spark = document.createElement("div");
         spark.className = "firework-spark";
         document.body.appendChild(spark);
@@ -113,16 +102,18 @@ function fireworks() {
         spark.style.top = y + "px";
 
         const angle = Math.random()*Math.PI*2;
-        const velocity = Math.random()*150+50;
+        const velocity = Math.random()*120+60;
 
         spark.animate([
-            { transform: 'translate(0,0) scale(1)', opacity: 1 },
-            { transform: `translate(${Math.cos(angle)*velocity}px,${Math.sin(angle)*velocity}px) scale(0)`, opacity: 0 }
+            { transform:'translate(0,0) scale(1)', opacity:1 },
+            { transform:`translate(${Math.cos(angle)*velocity}px,${Math.sin(angle)*velocity}px) scale(0)`, opacity:0 }
         ], { duration: 1000, easing: 'ease-out', fill: 'forwards' });
 
         setTimeout(() => spark.remove(), 1000);
     }
 }
+
+/* ================= MUSIC ================= */
 
 function startMusic() {
     const music = document.getElementById("bgMusic");
@@ -132,11 +123,9 @@ function startMusic() {
             let v = 0;
             const fade = setInterval(() => {
                 v += .05;
+                music.volume = Math.min(v, .5);
                 if (v >= .5) clearInterval(fade);
-                music.volume = v;
             }, 100);
         });
     }
 }
-
-
