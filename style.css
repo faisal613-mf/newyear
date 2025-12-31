@@ -2,208 +2,190 @@
    🌸 GLOBAL RESET & BASE
 ================================ */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-  background: linear-gradient(120deg, #ff9a9e, #fad0c4);
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
-  min-height: 100vh;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 /* ===============================
-   💌 INTRO
+   💌 INTRO SCREEN
 ================================ */
 .intro {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .tap {
-  margin-top: 20px;
-  opacity: 0.8;
-  animation: pulse 1.5s infinite;
+    margin-top: 20px;
+    opacity: 0.8;
+    animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 /* ===============================
    🎬 SLIDER & SLIDES
 ================================ */
 .slider {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .slide {
-  position: absolute;
-  inset: 0;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.slide.active { display: flex; }
+.slide.active {
+    display: flex;
+}
 
 /* ===============================
-   🪄 FLIP CARD
+   🪄 FLIP CARD + HEART FRAME
 ================================ */
 .flip-card {
-  width: 90%;
-  max-width: 700px;
-  min-height: 480px;
-  perspective: 1200px;
-  cursor: pointer;
-  margin-bottom: 30px;
-  position: relative;
+    width: 90%;
+    max-width: 700px;
+    min-height: 480px;
+    perspective: 1200px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    position: relative;
 }
 
 .flip-inner {
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
 .flip-card.active .flip-inner {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 .flip-front, .flip-back {
-  position: absolute;
-  inset: 0;
-  border-radius: 25px;
-  backface-visibility: hidden;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-  border: 1px solid rgba(255,255,255,0.3);
+    position: absolute;
+    inset: 0;
+    border-radius: 25px;
+    backface-visibility: hidden;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* HEART BORDER */
+.flip-front::after, .flip-back::after {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border: 22px solid transparent;
+    border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='white' d='M15 26.5l-1.45-1.32C8.4 20.36 5 17.28 5 13.5 5 10.42 7.42 8 10.5 8c1.74 0 3.41.81 4.5 2.09C16.09 8.81 17.76 8 19.5 8 22.58 8 25 10.42 25 13.5c0 3.78-3.4 6.86-8.55 11.54L15 26.5z'/%3E%3C/svg%3E");
+    border-image-slice: 30;
+    border-image-repeat: round;
+    pointer-events: none;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,.5));
 }
 
 .flip-back { transform: rotateY(180deg); }
 
 /* ===============================
-   🖼️ PHOTOS & BUTTONS
+   🖼 PHOTOS & BUTTONS
 ================================ */
-.photos { display: flex; gap: 10px; margin-bottom: 15px; }
+.photos {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
 
 .photos img {
-  width: 120px;
-  border-radius: 10px;
-  border: 3px solid white;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 120px;
+    border-radius: 10px;
+    border: 3px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
 }
 
 .next, .prev {
-  padding: 10px 25px;
-  border-radius: 20px;
-  border: none;
-  background: rgba(255,255,255,0.3);
-  color: white;
-  cursor: pointer;
-  margin: 5px;
-  transition: 0.3s;
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255,255,255,.3);
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    transition: .3s;
 }
 
-.next:hover { background: rgba(255,255,255,0.5); }
+.next:hover { background: rgba(255,255,255,.5); }
 
 /* ===============================
-   ✨ TEXT GLOW & FINAL
+   ✨ FINAL & EFFECTS
 ================================ */
-.card-text {
-  text-shadow: 0 0 5px rgba(255,255,255,0.8),
-               0 0 10px rgba(255,255,255,0.5);
-}
-
-#finalWish {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  opacity: 0;
-  color: white;
-  font-weight: bold;
-}
-
-#finalWish.reveal { opacity: 1; }
-
-#finalWish.glow {
-  animation: pulseGlow 2s infinite alternate;
-}
-
-@keyframes pulseGlow {
-  from { text-shadow: 0 0 10px #fff, 0 0 20px #ffb6c1; }
-  to   { text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4; }
-}
-
-#finalMessage .letter {
-  text-shadow: 0 0 8px rgba(255,255,255,0.6);
-}
+#finalWish { font-size: 2rem; margin-bottom: 20px; opacity: 0; }
+#finalWish.reveal { opacity: 1; transition: 1s; }
+#finalWish.glow { text-shadow: 0 0 15px #fff, 0 0 30px #ffb6c1; }
 
 .letter { display: inline-block; }
 
-/* ===============================
-   💖 HEARTS
-================================ */
+@keyframes letterAppear {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.firework-spark {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
 .burst-heart {
-  position: fixed;
-  pointer-events: none;
-  animation: heartOut 1s ease-out forwards;
+    position: fixed;
+    pointer-events: none;
+    animation: heartOut 1s ease-out forwards;
 }
 
 @keyframes heartOut {
-  to { transform: scale(2) translateY(-50px); opacity: 0; }
-}
-
-/* ===============================
-   🎆 FIREWORKS
-================================ */
-.firework {
-  position: fixed;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  animation: explode 1.2s ease-out forwards;
-}
-
-@keyframes explode {
-  from { transform: translate(0,0) scale(1); opacity: 1; }
-  to   { transform: translate(var(--x), var(--y)) scale(0.1); opacity: 0; }
+    to { transform: scale(2) translateY(-50px); opacity: 0; }
 }
 
 /* ===============================
    📱 MOBILE STABILITY
 ================================ */
 @media (max-width: 600px) {
-  .flip-card { min-height: 520px; }
-  .flip-front { font-size: 1.2rem; }
-  .card-text { font-size: 0.95rem; }
-
-  .slide {
-    justify-content: flex-start;
-    padding-top: 90px;
-    padding-bottom: 90px;
-  }
+    .flip-card { min-height: 520px; }
+    .flip-front { font-size: 1.2rem; }
+    .card-text { font-size: .95rem; }
 }
