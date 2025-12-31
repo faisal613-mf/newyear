@@ -46,6 +46,9 @@ function startFinalWish() {
 
     const wish = document.getElementById("finalWish");
     const msg = document.getElementById("finalMessage");
+    msg.style.wordBreak = "keep-all";
+    msg.style.whiteSpace = "normal";
+
 
     const text = wish.textContent;
     wish.innerHTML = "";
@@ -129,3 +132,4 @@ function startMusic() {
         });
     }
 }
+
