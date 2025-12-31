@@ -291,6 +291,17 @@ body {
     padding-bottom: 90px;
   }
 }
+/* ===============================
+   🧷 FINAL SLIDE LAYOUT STABILITY
+================================ */
+.final {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
 
 
 
