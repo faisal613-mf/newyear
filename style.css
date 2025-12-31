@@ -1,513 +1,193 @@
 /* ===============================
-   🌸 GLOBAL RESET & BASE STYLES
+   🌸 GLOBAL RESET & BASE
 ================================ */
 * {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-  background: linear-gradient(120deg, #ff9a9e, #fad0c4);
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 /* ===============================
-   💌 INTRO
+   💌 INTRO SCREEN
 ================================ */
 .intro {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .tap {
-  margin-top: 20px;
-  opacity: 0.8;
+    margin-top: 20px;
+    opacity: 0.8;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 /* ===============================
-   🎬 SLIDER
+   🎬 SLIDER & SLIDES
 ================================ */
 .slider {
-  height: 100vh;
-  overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .slide {
-  min-width: 100%;
-  height: 100vh;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 .slide.active {
-  display: flex;
+    display: flex;
 }
 
 /* ===============================
-   🪄 FLIP CARD
+   🪄 FLIP CARD + HEART FRAME
 ================================ */
 .flip-card {
-  width: 90%;
-  max-width: 700px;
-  min-height: 460px;
-  perspective: 1200px;
-  cursor: pointer;
-  margin-bottom: 40px;
+    width: 90%;
+    max-width: 700px;
+    min-height: 480px;
+    perspective: 1200px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    position: relative;
 }
 
 .flip-inner {
-  width: 100%;
-  height: 100%;
-  transition: transform 1s;
-  transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
 .flip-card.active .flip-inner {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
-.flip-front,
-.flip-back {
-  position: absolute;
-  inset: 0;
-  border-radius: 25px;
-  backface-visibility: hidden;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flip-front {
-  flex-direction: column;
-  font-size: 26px;
-  padding: 30px;
-}
-
-.flip-front .hint {
-  position: absolute;
-  bottom: 18px;
-  left: 0;
-  right: 0;
-  font-size: 14px;
-  opacity: 0.7;
-}
-
-.flip-back {
-  transform: rotateY(180deg);
-  flex-direction: column;
-  padding: 24px;
-  z-index: 2;
-}
-
-.flip-back p {
-  margin-bottom: 20px;
-  line-height: 1.7;
-}
-
-/* ===============================
-   🖼️ PHOTOS
-================================ */
-.photos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.photos img {
-  width: 135px;
-  border-radius: 12px;
-  transition: 0.3s ease;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.18);
-}
-
-.photos img:first-child {
-  transform: rotate(-6deg);
-  margin-right: -25px;
-}
-
-.photos img:last-child {
-  transform: rotate(6deg);
-}
-
-.photos img:hover {
-  transform: scale(1.05) rotate(0deg);
-  z-index: 5;
-}
-
-/* ===============================
-   🔘 BUTTONS
-================================ */
-.next,
-.prev {
-  border-radius: 30px;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-.next {
-  padding: 12px 30px;
-  background: rgba(255,255,255,0.4);
-  font-size: 16px;
-  margin-bottom: 14px;
-}
-
-.prev {
-  padding: 10px 25px;
-  background: rgba(255,255,255,0.25);
-  font-size: 15px;
-}
-
-/* ===============================
-   🎆 FINAL
-================================ */
-.final {
-  padding: 80px 10%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* ===============================
-   💖 HEARTS
-================================ */
-.burst-heart {
-  position: fixed;
-  color: rgba(255,255,255,0.9);
-  font-size: 20px;
-  animation: burst 1s ease forwards;
-  pointer-events: none;
-}
-
-@keyframes burst {
-  from { transform: scale(0); opacity: 1; }
-  to   { transform: scale(2); opacity: 0; }
-}
-
-/* ===============================
-   ✨ FINAL WISH ANIMATION
-================================ */
-#finalWish,
-#finalMessage {
-  visibility: visible;
-}
-
-#finalWish {
-  font-size: 28px;
-  margin-bottom: 25px;
-  opacity: 0;
-  transform: translateY(25px);
-}
-
-#finalWish.reveal {
-  animation: reveal 1.6s ease forwards;
-}
-
-@keyframes reveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-#finalWish.glow {
-  text-shadow:
-    0 0 8px rgba(255,255,255,0.6),
-    0 0 18px rgba(255,182,193,0.9);
-}
-
-.letter {
-  display: inline-block;
-  animation: letterJiggle 0.6s ease;
-}
-
-@keyframes letterJiggle {
-  0%   { transform: scale(1); }
-  40%  { transform: scale(1.25); }
-  70%  { transform: scale(0.95); }
-  100% { transform: scale(1); }
-}
-
-#finalMessage div {
-  text-align: center;
-}
-
-/* ===============================
-   📱 MOBILE STABILITY (ONLY FIX)
-================================ */
-@media (max-width: 600px) {
-  .final,
-  .flip-back {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-}
-  .final p,
-  .flip-back p {
-    max-width: 420px;
-    margin: auto;
-    line-height: 1.6;
-  }
-
-  .final h1 {
-    font-size: 26px;
-  }
-
-  .flip-card {
-    width: 94%;
-    min-height: 540px;
-  }
-
-  .flip-front {
-    font-size: 1.4rem;
-  }
-
-  .flip-back p {
-    font-size: 1.05rem;
-  }
-}
-
-
-  .intro,
-  .slider,
-  .slide {
-    min-height: 100vh;
-  }
-
-  .slide {
-    justify-content: flex-start;
-    padding-top: 90px;
-    padding-bottom: 90px;
-  }
-}
-/* ===============================
-   🧷 FINAL SLIDE LAYOUT STABILITY
-================================ */
-.final {
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-@keyframes letterAppear {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* ===============================
-   💖 CARD TEXT GLOW
-================================ */
-.card-text {
-  color: #fff;
-  text-shadow:
-    0 0 5px rgba(255, 255, 255, 0.8),
-    0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-/* ===============================
-   ✨ FINAL MESSAGE NEON GLOW
-================================ */
-#finalWish {
-  color: #fff;
-  font-weight: bold;
-  text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px #ffb6c1,
-    0 0 82px #ffb6c1;
-}
-
-#finalMessage .letter {
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-}
-
-/* ===============================
-   🌸 OPTIONAL PULSING HEARTBEAT GLOW
-================================ */
-#finalWish.glow {
-  animation: pulseGlow 2s infinite alternate;
-}
-
-@keyframes pulseGlow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #ffb6c1;
-  }
-  to {
-    text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4;
-  }
-}
-
-
-
-
-/* Bulletproof Firework Spark */
-.firework-spark {
-  position: fixed;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* Ensure letters appear quickly */
-@keyframes letterAppear {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-
-/* Container for the images to allow absolute positioning of hearts */
-.photos {
-  position: relative;
-  padding: 20px;
-}
-
-.photos img {
-  width: 135px;
-  border-radius: 12px;
-  border: 4px solid #fff; /* The white border from the image */
-  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4); /* Soft pink glow */
-  transition: 0.3s ease;
-  position: relative;
-  z-index: 2;
-}
-
-/* Adding the decorative hearts around the photo frame */
-.photos::before, .photos::after {
-  content: '💗';
-  position: absolute;
-  font-size: 24px;
-  filter: drop-shadow(0 0 5px white);
-  z-index: 3;
-  animation: heartFloat 3s ease-in-out infinite;
-}
-
-/* Position top-left heart */
-.photos::before {
-  top: -5px;
-  left: 10px;
-  transform: rotate(-15deg);
-}
-
-/* Position bottom-right heart */
-.photos::after {
-  content: '💖';
-  bottom: -5px;
-  right: 10px;
-  transform: rotate(15deg);
-  animation-delay: 1.5s;
-}
-
-/* Gentle floating animation for the corner hearts */
-@keyframes heartFloat {
-  0%, 100% { transform: translateY(0) rotate(-15deg); }
-  50% { transform: translateY(-10px) rotate(-10deg); }
-}
-.sparkle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 40px;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.6;
-}
-
-.flip-card::before {
-  content: "";
-  position: absolute;
-  /* Adjust these values to make the frame bigger or smaller */
-  top: -20px;
-  left: -10px;
-  right: -10px;
-  bottom: -20px;
-  
-  /* The Heart Pattern */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
-  background-size: 20px 20px;
-  background-repeat: round;
-  
-  /* This creates the "hollow" middle so you only see the border */
-  -webkit-mask-image: linear-gradient(black, black), linear-gradient(black, black);
-  -webkit-mask-clip: content-box, border-box;
-  -webkit-mask-composite: source-out;
-  mask-composite: exclude;
-  
-  border: 20px solid transparent; /* This controls the thickness of the heart border */
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.8;
-}
-
-/* Optional: Add a soft glow to the heart border */
-.flip-card::before {
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-}
-.flip-card::after {
-  content: '💗';
-  position: absolute;
-  top: -40px;
-  left: 20px;
-  font-size: 40px;
-  opacity: 0.6;
-  filter: blur(1px);
-  animation: softFloat 4s ease-in-out infinite;
-}
-
-@keyframes softFloat {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-15px) scale(1.1); }
-}
 .flip-front, .flip-back {
     position: absolute;
     inset: 0;
     border-radius: 25px;
     backface-visibility: hidden;
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    /* --- HEART BORDER START --- */
-    border: 18px solid transparent; /* Thickness of the heart frame */
-    border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='white' d='M15 26.5l-1.45-1.32C8.4 20.36 5 17.28 5 13.5 5 10.42 7.42 8 10.5 8c1.74 0 3.41.81 4.5 2.09C16.09 8.81 17.76 8 19.5 8 22.58 8 25 10.42 25 13.5c0 3.78-3.4 6.86-8.55 11.54L15 26.5z'/%3E%3C/svg%3E");
-    border-image-slice: 30; /* Matches SVG size for perfect clarity */
-    border-image-repeat: round; /* Ensures hearts aren't cut in half */
-    /* --- HEART BORDER END --- */
-    
-    box-sizing: border-box;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Add a subtle glow to the heart frame to match the vibe */
-.flip-front::before, .flip-back::before {
+/* THE HEART BORDER FRAME */
+.flip-front::after, .flip-back::after {
     content: "";
     position: absolute;
-    inset: -18px; /* Matches the border thickness */
-    border-radius: 35px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    inset: -12px;
+    border: 22px solid transparent;
+    border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='white' d='M15 26.5l-1.45-1.32C8.4 20.36 5 17.28 5 13.5 5 10.42 7.42 8 10.5 8c1.74 0 3.41.81 4.5 2.09C16.09 8.81 17.76 8 19.5 8 22.58 8 25 10.42 25 13.5c0 3.78-3.4 6.86-8.55 11.54L15 26.5z'/%3E%3C/svg%3E");
+    border-image-slice: 30;
+    border-image-repeat: round;
     pointer-events: none;
-    z-index: -1;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+.flip-back {
+    transform: rotateY(180deg);
+}
+
+/* ===============================
+   🖼️ PHOTOS & BUTTONS
+================================ */
+.photos {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.photos img {
+    width: 120px;
+    border-radius: 10px;
+    border: 3px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.next, .prev {
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.next:hover { background: rgba(255, 255, 255, 0.5); }
+
+/* ===============================
+   ✨ FINAL MESSAGE & EFFECTS
+================================ */
+#finalWish { font-size: 2rem; margin-bottom: 20px; opacity: 0; }
+#finalWish.reveal { opacity: 1; transition: 1s; }
+#finalWish.glow { text-shadow: 0 0 15px #fff, 0 0 30px #ffb6c1; }
+
+.letter { display: inline-block; }
+
+@keyframes letterAppear {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.firework-spark {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.burst-heart {
+    position: fixed;
+    pointer-events: none;
+    animation: heartOut 1s ease-out forwards;
+}
+
+@keyframes heartOut {
+    to { transform: scale(2) translateY(-50px); opacity: 0; }
+}
+
+/* ===============================
+   📱 MOBILE STABILITY
+================================ */
+@media (max-width: 600px) {
+    .flip-card { min-height: 520px; }
+    .flip-front { font-size: 1.2rem; }
+    .card-text { font-size: 0.95rem; }
 }
