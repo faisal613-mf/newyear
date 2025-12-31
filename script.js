@@ -66,6 +66,7 @@ function startFinalWish() {
         const span = document.createElement("span");
         span.textContent = char === " " ? "\u00A0" : char;
         span.className = "letter";
+        span.style.display = "inline-block";
         span.style.animation = "letterAppear .3s ease forwards";
         span.style.animationDelay = `${i * .03}s`;
         wish.appendChild(span);
@@ -149,3 +150,4 @@ function startMusic() {
         });
     }
 }
+
