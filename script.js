@@ -53,46 +53,34 @@ function startFinalWish() {
     const wish = document.getElementById("finalWish");
     const msg = document.getElementById("finalMessage");
 
+    // Clear and Show
     const headingText = wish.textContent;
-    const messageHTML = msg.innerHTML;
-
     wish.innerHTML = "";
-    msg.innerHTML = "";
     wish.style.visibility = "visible";
+    wish.style.opacity = "1";
     msg.style.visibility = "visible";
-    wish.classList.add("reveal");
 
+    // 1. Animate Heading
     [...headingText].forEach((char, i) => {
         const span = document.createElement("span");
         span.textContent = char === " " ? "\u00A0" : char;
         span.className = "letter";
         span.style.display = "inline-block";
-        span.style.animation = "letterAppear .3s ease forwards";
-        span.style.animationDelay = `${i * .03}s`;
+        span.style.animation = "letterAppear .5s ease forwards";
+        span.style.animationDelay = `${i * 0.05}s`;
         wish.appendChild(span);
     });
 
-    setTimeout(() => wish.classList.add("glow"), 500);
-
+    // 2. Reveal Message and Start Continuous Celebration
     setTimeout(() => {
-        const lines = messageHTML.split("<br>");
-        let total = 0;
-
-        lines.forEach(line => {
-            const lineDiv = document.createElement("div");
-            [...line.trim()].forEach(char => {
-                const span = document.createElement("span");
-                span.textContent = char === " " ? "\u00A0" : char;
-                span.className = "letter";
-                span.style.opacity = "0";
-                span.style.animation = "letterAppear .3s ease forwards";
-                span.style.animationDelay = `${total * .015}s`;
-                total++;
-                lineDiv.appendChild(span);
-            });
-            msg.appendChild(lineDiv);
-        });
-    }, 600);
+        wish.classList.add("glow");
+        msg.style.transition = "opacity 2s ease";
+        msg.style.opacity = "1";
+        
+        // Intensify Fireworks for the finale
+        setInterval(fireworks, 600); 
+        setInterval(burstHearts, 1500);
+    }, 1500);
 }
 
 function burstHearts() {
@@ -150,4 +138,5 @@ function startMusic() {
         });
     }
 }
+
 
