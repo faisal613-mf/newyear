@@ -168,14 +168,13 @@ body {
 }
 
 .photos img {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 50%; /* Circular photos look more elegant */
-    border: 4px solid white;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    width: 140px;      /* Slightly larger */
+    height: auto;      /* Maintain aspect ratio */
+    object-fit: contain; 
+    border-radius: 12px; /* Soft corners instead of circle */
+    border: 3px solid white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
-
 .next, .prev {
     padding: 12px 30px;
     border-radius: 50px;
@@ -186,6 +185,7 @@ body {
     cursor: pointer;
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
+    margin: 15px 10px; /* Added 10px horizontal margin to separate them */
 }
 
 .next:hover, .prev:hover { 
@@ -207,6 +207,10 @@ body {
 #finalMessage {
     font-weight: 300;
     font-size: 1.1rem;
+    margin-top: 20px;
+    line-height: 1.6;
+    visibility: visible !important; /* Forces visibility */
+    opacity: 0;
 }
 
 /* ===============================
@@ -225,3 +229,11 @@ body {
 }
 
 
+@media (max-width: 600px) {
+    .photos img { width: 110px; }
+    .next, .prev {
+        display: inline-block;
+        width: auto;
+        padding: 10px 20px;
+    }
+}
