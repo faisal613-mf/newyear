@@ -114,25 +114,28 @@ body {
 
 .card-frame {
     position: absolute;
-    top: -42px;
-    left: -42px;
-    right: -42px;
-    bottom: -42px;
+
+    top: -70px;     /* ⬅ makes top bigger */
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
 
     background: url("images/heart-frame.png") center / 100% 100% no-repeat;
     pointer-events: none;
     z-index: 10;
 
-    filter: drop-shadow(0 0 18px rgba(255,255,255,0.65));
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.65));
 }
+
 @keyframes framePulse {
-    0%   { filter: drop-shadow(0 0 12px rgba(255,255,255,0.55)); }
-    100% { filter: drop-shadow(0 0 22px rgba(255,182,193,0.9)); }
+    from { filter: drop-shadow(0 0 14px rgba(255,255,255,0.5)); }
+    to   { filter: drop-shadow(0 0 26px rgba(255,182,193,0.9)); }
 }
 
 .card-frame {
-    animation: framePulse 2.5s ease-in-out infinite alternate;
+    animation: framePulse 2.8s ease-in-out infinite alternate;
 }
+
 
 .flip-back {
     transform: rotateY(180deg);
@@ -208,5 +211,6 @@ body {
     .flip-front { font-size: 1.2rem; }
     .card-text { font-size: 0.95rem; }
 }
+
 
 
