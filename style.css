@@ -277,10 +277,6 @@ body {
 /* ===============================
    🧩 MOBILE TEXT FIX (NEW - SAFE)
 ================================ */
-* {
-  word-break: keep-all;
-  overflow-wrap: normal;
-}
 
 .slide {
   padding-left: 20px;
@@ -290,4 +286,17 @@ body {
 .final {
   max-width: 92%;
   margin: auto;
+}
+
+.slide,
+.flip-back p,
+.final,
+#finalMessage {
+   max-width: 92%;
+   margin-left: auto;
+   margin-right: auto:
+}
+p, h1, h2, h3 {
+   overflow-wrap: anywhere;
+   word-break: normal;
 }
