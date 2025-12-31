@@ -56,8 +56,9 @@ function startFinalWish() {
   const headingText = wish.textContent;
   const messageHTML = msg.innerHTML;
 
-  wish.textContent = "";
-  msg.innerHTML = "";
+  wish.innerHTML = "&nbsp;";
+msg.innerHTML = "&nbsp;";
+
 
   wish.style.visibility = "visible";
   msg.style.visibility  = "visible";
@@ -173,3 +174,4 @@ function fireworks() {
     setTimeout(() => spark.remove(), 1000);
   }
 }
+
