@@ -372,6 +372,27 @@ body {
   100% { transform: scale(5) translate(var(--tw-x, 20px), var(--tw-y, 20px)); opacity: 0; }
 }
 
+.firework {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    /* Moves the spark to the unique random position defined in JS */
+    transform: translate(var(--x), var(--y)) scale(0.5);
+    opacity: 0;
+  }
+}
 
 
 
