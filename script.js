@@ -52,36 +52,28 @@ function startFinalWish() {
   const wish = document.getElementById("finalWish");
   const msg = document.getElementById("finalMessage");
 
-  // Save original content
   const headingText = wish.textContent;
   const messageHTML = msg.innerHTML;
 
-  // Prepare containers
   wish.innerHTML = "";
   msg.innerHTML = "";
-
-  // Make visible before animating
   wish.style.visibility = "visible";
   msg.style.visibility = "visible";
   wish.style.opacity = "1";
-
   wish.classList.add("reveal");
 
-  // Animate heading
+  // Heading typing
   [...headingText].forEach((char, i) => {
     const span = document.createElement("span");
     span.textContent = char === " " ? "\u00A0" : char;
     span.className = "letter";
-    span.style.animationDelay = `${i * 0.05}s`;
+    span.style.animationDelay = `${i * 0.03}s`; // Faster heading
     wish.appendChild(span);
   });
 
-  // ADDED: Corrected glow timeout
-  setTimeout(() => {
-    wish.classList.add("glow");
-  }, 1200); // This was the missing part!
+  setTimeout(() => { wish.classList.add("glow"); }, 800);
 
-  // Animate message
+  // Message typing (FAST)
   setTimeout(() => {
     const lines = messageHTML.split("<br>");
     let delay = 0;
@@ -95,15 +87,14 @@ function startFinalWish() {
         span.textContent = char === " " ? "\u00A0" : char;
         span.className = "letter";
         span.style.opacity = "0";
-        span.style.animation = `letterAppear 0.6s ease forwards`;
-        span.style.animationDelay = `${delay * 0.04}s`;
+        span.style.animation = `letterAppear 0.3s ease forwards`;
+        span.style.animationDelay = `${delay * 0.015}s`; // Much faster typing
         delay++;
         lineDiv.appendChild(span);
       });
-
       msg.appendChild(lineDiv);
     });
-  }, 1200);
+  }, 800);
 }
 /* ===============================
    🃏 FLIP CARDS
@@ -156,41 +147,39 @@ document.body.addEventListener("click", () => {
   }
 });
 
-
 function fireworks() {
-  const vw = window.innerWidth; // Add this
-  const vh = window.innerHeight; // Add this
-  
-  const colors = ['#ff4d6d', '#ffb3c1', '#ff758f', '#fff', '#ffd700', '#ff85a1'];
+  const colors = ['#ff4d6d', '#ffb3c1', '#ffd700', '#ffffff', '#ff85a1', '#00ffff'];
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  
+  // Create explosion at a random spot in the top half of the screen
+  const originX = Math.random() * window.innerWidth;
+  const originY = Math.random() * (window.innerHeight * 0.6);
 
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 30; i++) {
     const spark = document.createElement("div");
-    spark.className = "firework";
+    spark.className = "firework-spark"; // Using a new class name to avoid conflicts
     document.body.appendChild(spark);
 
-    // Position explosion in the center area
-    const startX = vw / 2;
-    const startY = vh / 2;
-
     spark.style.backgroundColor = randomColor;
-    spark.style.boxShadow = `0 0 10px ${randomColor}, 0 0 20px ${randomColor}`;
+    spark.style.boxShadow = `0 0 10px ${randomColor}`;
+    spark.style.left = originX + "px";
+    spark.style.top = originY + "px";
 
     const angle = Math.random() * Math.PI * 2;
-    const velocity = Math.random() * 200 + 100; // Increased distance
+    const velocity = Math.random() * 100 + 50;
     const xDist = Math.cos(angle) * velocity;
     const yDist = Math.sin(angle) * velocity;
 
-    spark.style.left = startX + "px";
-    spark.style.top = startY + "px";
+    // Apply movement directly via JS animation
+    spark.animate([
+      { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+      { transform: `translate(${xDist}px, ${yDist}px) scale(0)`, opacity: 0 }
+    ], {
+      duration: 1000,
+      easing: 'ease-out',
+      fill: 'forwards'
+    });
 
-    spark.style.setProperty('--x', `${xDist}px`);
-    spark.style.setProperty('--y', `${yDist}px`);
-
-    setTimeout(() => spark.remove(), 1200);
+    setTimeout(() => spark.remove(), 1000);
   }
 }
-
-
-
-
