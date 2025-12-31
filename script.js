@@ -156,32 +156,42 @@ document.body.addEventListener("click", () => {
   }
 });
 
-/* ===============================
-   🎆 FIREWORKS (FIXED)
-================================ */
-let fireworksStarted = false;
-
-function startFireworks() {
-  if (fireworksStarted) return;
-  fireworksStarted = true;
-  setInterval(fireworks, 1200);
-}
 
 function fireworks() {
+  // 1. Define a set of romantic & celebratory colors
+  const colors = ['#ff4d6d', '#ffb3c1', '#ff758f', '#fff', '#ffd700', '#ff85a1'];
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
   for (let i = 0; i < 40; i++) {
     const spark = document.createElement("div");
     spark.className = "firework";
     document.body.appendChild(spark);
 
-    const x = vw / 2 + Math.random() * 300 - 150;
-    const y = vh / 2 + Math.random() * 300 - 150;
+    // 2. Set the starting position (center area)
+    const startX = vw / 2 + (Math.random() * 200 - 100);
+    const startY = vh / 2 + (Math.random() * 200 - 100);
 
-    spark.style.left = x + "px";
-    spark.style.top  = y + "px";
+    // 3. Apply the random color and glow
+    spark.style.backgroundColor = randomColor;
+    spark.style.boxShadow = `0 0 10px ${randomColor}, 0 0 20px ${randomColor}`;
+
+    // 4. Calculate a random explosion direction for each spark
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = Math.random() * 150 + 50;
+    const xDist = Math.cos(angle) * velocity;
+    const yDist = Math.sin(angle) * velocity;
+
+    spark.style.left = startX + "px";
+    spark.style.top = startY + "px";
+
+    // 5. Use CSS Variables to tell the animation where to fly to
+    spark.style.setProperty('--x', `${xDist}px`);
+    spark.style.setProperty('--y', `${yDist}px`);
 
     setTimeout(() => spark.remove(), 1000);
   }
 }
+
 
 
 
