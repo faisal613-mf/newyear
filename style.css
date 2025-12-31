@@ -376,3 +376,61 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+
+/* Container for the images to allow absolute positioning of hearts */
+.photos {
+  position: relative;
+  padding: 20px;
+}
+
+.photos img {
+  width: 135px;
+  border-radius: 12px;
+  border: 4px solid #fff; /* The white border from the image */
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4); /* Soft pink glow */
+  transition: 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Adding the decorative hearts around the photo frame */
+.photos::before, .photos::after {
+  content: '💗';
+  position: absolute;
+  font-size: 24px;
+  filter: drop-shadow(0 0 5px white);
+  z-index: 3;
+  animation: heartFloat 3s ease-in-out infinite;
+}
+
+/* Position top-left heart */
+.photos::before {
+  top: -5px;
+  left: 10px;
+  transform: rotate(-15deg);
+}
+
+/* Position bottom-right heart */
+.photos::after {
+  content: '💖';
+  bottom: -5px;
+  right: 10px;
+  transform: rotate(15deg);
+  animation-delay: 1.5s;
+}
+
+/* Gentle floating animation for the corner hearts */
+@keyframes heartFloat {
+  0%, 100% { transform: translateY(0) rotate(-15deg); }
+  50% { transform: translateY(-10px) rotate(-10deg); }
+}
+.sparkle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
