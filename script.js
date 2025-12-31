@@ -130,31 +130,37 @@ function burstHearts() {
 }
 
 function fireworks() {
-    const colors = ['#ff4d6d', '#ffd700', '#ffffff', '#00ffff', '#ff85a1'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    const originX = Math.random() * window.innerWidth;
-    const originY = Math.random() * (window.innerHeight * 0.5);
+  const vw = window.innerWidth; // Add this
+  const vh = window.innerHeight; // Add this
+  
+  const colors = ['#ff4d6d', '#ffb3c1', '#ff758f', '#fff', '#ffd700', '#ff85a1'];
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-    for (let i = 0; i < 30; i++) {
-        const spark = document.createElement("div");
-        spark.className = "firework-spark";
-        document.body.appendChild(spark);
+  for (let i = 0; i < 40; i++) {
+    const spark = document.createElement("div");
+    spark.className = "firework";
+    document.body.appendChild(spark);
 
-        spark.style.backgroundColor = randomColor;
-        spark.style.boxShadow = `0 0 10px ${randomColor}`;
-        spark.style.left = originX + "px";
-        spark.style.top = originY + "px";
+    // Position explosion in the center area
+    const startX = vw / 2;
+    const startY = vh / 2;
 
-        const angle = Math.random() * Math.PI * 2;
-        const velocity = Math.random() * 150 + 50;
-        
-        spark.animate([
-            { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-            { transform: `translate(${Math.cos(angle) * velocity}px, ${Math.sin(angle) * velocity}px) scale(0)`, opacity: 0 }
-        ], { duration: 1000, easing: 'ease-out', fill: 'forwards' });
+    spark.style.backgroundColor = randomColor;
+    spark.style.boxShadow = `0 0 10px ${randomColor}, 0 0 20px ${randomColor}`;
 
-        setTimeout(() => spark.remove(), 1000);
-    }
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = Math.random() * 200 + 100; // Increased distance
+    const xDist = Math.cos(angle) * velocity;
+    const yDist = Math.sin(angle) * velocity;
+
+    spark.style.left = startX + "px";
+    spark.style.top = startY + "px";
+
+    spark.style.setProperty('--x', `${xDist}px`);
+    spark.style.setProperty('--y', `${yDist}px`);
+
+    setTimeout(() => spark.remove(), 1200);
+  }
 }
 
 /* ===============================
@@ -174,4 +180,5 @@ function startMusic() {
         }).catch(() => {});
     }
 }
+
 
