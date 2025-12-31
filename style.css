@@ -313,6 +313,50 @@ body {
 }
 
 
+/* ===============================
+   💖 CARD TEXT GLOW
+================================ */
+.card-text {
+  color: #fff;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* ===============================
+   ✨ FINAL MESSAGE NEON GLOW
+================================ */
+#finalWish {
+  color: #fff;
+  font-weight: bold;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #ffb6c1,
+    0 0 82px #ffb6c1;
+}
+
+#finalMessage .letter {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* ===============================
+   🌸 OPTIONAL PULSING HEARTBEAT GLOW
+================================ */
+#finalWish.glow {
+  animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #ffb6c1;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4;
+  }
+}
+
 
 
 
