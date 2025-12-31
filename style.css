@@ -193,3 +193,81 @@ body {
 }
 
 
+.card-text {
+  color: #fff;
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.8), 
+    0 0 10px rgba(255, 255, 255, 0.5);
+}
+/* This targets the "Happy New Year" heading */
+#finalWish {
+  color: #fff;
+  font-weight: bold;
+  /* Stacking multiple shadows creates a neon effect */
+  text-shadow: 
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #ffb6c1, /* Light Pink */
+    0 0 82px #ffb6c1;
+}
+
+/* This targets the typing letters in the final message */
+#finalMessage .letter {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+#finalWish.glow {
+  animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #ffb6c1;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4; /* Brighter Pink */
+  }
+}
+
+.firework {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff0, 0 0 20px #f00; /* Yellow and Red glow */
+  animation: fireworkExplode 1s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes fireworkExplode {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(5) translate(var(--tw-x, 20px), var(--tw-y, 20px)); opacity: 0; }
+}
+.slider {
+  height: 100vh;
+  display: flex; /* Added this */
+  align-items: center; /* Added this */
+  overflow: hidden;
+}
+.firework {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    /* Moves the spark to the unique random position defined in JS */
+    transform: translate(var(--x), var(--y)) scale(0.5);
+    opacity: 0;
+  }
+}
