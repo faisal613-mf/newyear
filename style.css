@@ -300,3 +300,26 @@ p, h1, h2, h3 {
    overflow-wrap: anywhere;
    word-break: normal;
 }
+/* ===============================
+   🔒 FINAL MOBILE TEXT LOCK
+================================ */
+
+@media (max-width: 600px) {
+
+  .final,
+  #finalMessage,
+  .flip-back p {
+      width: 88vw;
+      max-width: 88vw;
+  }
+
+  h1 {
+      white-space: normal;
+  }
+
+  p {
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+  }
+}
