@@ -1,209 +1,195 @@
+/* ===============================
+   🌸 GLOBAL RESET & BASE
+================================ */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-  background: linear-gradient(120deg, #ff9a9e, #fad0c4);
-  color: white;
-  text-align: center;
-  overflow: hidden;
-  height: 100vh;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
-/* Intro */
+/* ===============================
+   💌 INTRO SCREEN
+================================ */
 .intro {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-.tap { margin-top: 20px; }
+.tap {
+    margin-top: 20px;
+    opacity: 0.8;
+    animation: pulse 1.5s infinite;
+}
 
-/* Slider */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* ===============================
+   🎬 SLIDER & SLIDES
+================================ */
 .slider {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .slide {
-  position: absolute;
-  inset: 0;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.slide.active { display: flex; }
+.slide.active {
+    display: flex;
+}
 
-/* Card */
+/* ===============================
+   🪄 FLIP CARD + HEART FRAME
+================================ */
 .flip-card {
-  width: 320px;
-  height: 480px;
-  perspective: 1200px;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
+    width: 90%;
+    max-width: 700px;
+    min-height: 480px;
+    perspective: 1200px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    position: relative;
 }
 
 .flip-inner {
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
-.flip-card.active .flip-inner { transform: rotateY(180deg); }
-
-/* Frame */
-.card-frame {
-  position: absolute;
-  inset: -32px;
-  background: url("images/heart-frame.png") center / contain no-repeat;
-  z-index: 10;
-  pointer-events: none;
-  filter: drop-shadow(0 0 18px rgba(255,255,255,0.7));
+.flip-card.active .flip-inner {
+    transform: rotateY(180deg);
 }
 
-/* Faces */
 .flip-front, .flip-back {
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  backface-visibility: hidden;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.3);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+    position: absolute;
+    inset: 0;
+    border-radius: 25px;
+    backface-visibility: hidden;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.flip-back { transform: rotateY(180deg); }
-
-/* Photos */
-.photos { display: flex; gap: 10px; margin-bottom: 15px; }
-
-.photos img {
-  width: 90px;
-  height: 120px;
-  border-radius: 10px;
-  border: 2px solid white;
-  box-shadow: 0 0 12px rgba(255,255,255,0.7);
+/* THE HEART BORDER FRAME */
+.flip-front::after, .flip-back::after {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border: 22px solid transparent;
+    border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='white' d='M15 26.5l-1.45-1.32C8.4 20.36 5 17.28 5 13.5 5 10.42 7.42 8 10.5 8c1.74 0 3.41.81 4.5 2.09C16.09 8.81 17.76 8 19.5 8 22.58 8 25 10.42 25 13.5c0 3.78-3.4 6.86-8.55 11.54L15 26.5z'/%3E%3C/svg%3E");
+    border-image-slice: 30;
+    border-image-repeat: round;
+    pointer-events: none;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
 }
 
-/* Controls */
-.controls { margin-top: 30px; }
-
-.next, .prev {
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
-  background: rgba(255,255,255,0.4);
-  color: white;
-  cursor: pointer;
-}
-
-/* Final */
-.final { margin-top: 20px; }
-
-#finalWish { font-size: 1.8rem; opacity: 0; }
-#finalMessage { opacity: 0; }
-
-#finalWish.show, #finalMessage.show {
-  opacity: 1;
-  transition: 1.5s;
+.flip-back {
+    transform: rotateY(180deg);
 }
 
 /* ===============================
-   💎 CARD — CLEAN GLASS LOOK (NO BORDER)
-================================ */
-.flip-card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  border-radius: 22px;
-  padding: 22px;
-  box-shadow: 0 20px 40px rgba(255, 105, 135, 0.25);
-}
-
-/* Remove any border if exists */
-.flip-card, .flip-front, .flip-back {
-  border: none !important;
-}
-
-/* ===============================
-   🖼️ IMAGE SIZE — NORMAL & BALANCED
+   🖼️ PHOTOS & BUTTONS
 ================================ */
 .photos {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin-bottom: 16px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
 .photos img {
-  width: 130px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(255, 100, 130, 0.35);
+    width: 120px;
+    border-radius: 10px;
+    border: 3px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.next, .prev {
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.next:hover { background: rgba(255, 255, 255, 0.5); }
+
+/* ===============================
+   ✨ FINAL MESSAGE & EFFECTS
+================================ */
+#finalWish { font-size: 2rem; margin-bottom: 20px; opacity: 0; }
+#finalWish.reveal { opacity: 1; transition: 1s; }
+#finalWish.glow { text-shadow: 0 0 15px #fff, 0 0 30px #ffb6c1; }
+
+.letter { display: inline-block; }
+
+@keyframes letterAppear {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.firework-spark {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.burst-heart {
+    position: fixed;
+    pointer-events: none;
+    animation: heartOut 1s ease-out forwards;
+}
+
+@keyframes heartOut {
+    to { transform: scale(2) translateY(-50px); opacity: 0; }
 }
 
 /* ===============================
-   ✨ TEXT — RESTORED GLOW & BEAUTY
+   📱 MOBILE STABILITY
 ================================ */
-.flip-back p,
-.final-text {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #fff;
-  text-shadow:
-      0 0 6px rgba(255,255,255,0.7),
-      0 0 12px rgba(255,105,135,0.7),
-      0 0 24px rgba(255,105,135,0.5);
+@media (max-width: 600px) {
+    .flip-card { min-height: 520px; }
+    .flip-front { font-size: 1.2rem; }
+    .card-text { font-size: 0.95rem; }
 }
 
-/* ===============================
-   💖 LAST SLIDE — SPECIAL EFFECT
-================================ */
-.final-text {
-  font-size: 1.4rem;
-  animation: glowPulse 2s ease-in-out infinite alternate;
-}
 
-@keyframes glowPulse {
-  from {
-    text-shadow:
-      0 0 8px rgba(255,255,255,0.6),
-      0 0 16px rgba(255,105,135,0.8),
-      0 0 32px rgba(255,105,135,0.6);
-  }
-  to {
-    text-shadow:
-      0 0 12px rgba(255,255,255,0.9),
-      0 0 24px rgba(255,105,135,1),
-      0 0 48px rgba(255,105,135,0.9);
-  }
-}
-
-/* ===============================
-   🎯 BUTTONS — SOFT & CLEAN
-================================ */
-button {
-  border: none;
-  border-radius: 30px;
-  padding: 10px 18px;
-  background: rgba(255,255,255,0.22);
-  backdrop-filter: blur(8px);
-  color: #fff;
-  box-shadow: 0 8px 18px rgba(255,105,135,0.35);
-}
