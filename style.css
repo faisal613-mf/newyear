@@ -1,3 +1,7 @@
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
 /* ===============================
    🌸 GLOBAL RESET & BASE
 ================================ */
@@ -317,12 +321,24 @@ body {
 }
 
 
+.final {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10vh; /* pushes content up just a bit for balance */
+}
 
 
 #finalWish {
     white-space: nowrap;
     max-width: 100%;
 }
+#finalMessage {
+    margin-top: 20px;
+}
+
 
 
 
