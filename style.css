@@ -140,10 +140,10 @@ body {
 
 .photos img {
     width: 45%;
-    height: 180px;
+    height: 220px;
     object-fit: contain;
     background: white;
-    padding: 5px;
+    padding: 2px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
@@ -178,6 +178,7 @@ body {
     font-weight: 800;
     margin-bottom: 20px;
     line-height: 1.2;
+    white-space: nowrap
 }
 
 #finalWish.glow {
@@ -211,7 +212,7 @@ body {
     .card-text { font-size: 0.9rem; }
     #finalWish { font-size: 1.8rem; }
     #finalMessage { font-size: 1rem; }
-    .photos img { height: 140px; }
+    .photos img { height: 190px; }
 }
 
 /* Burst Heart and Firework Spark Styles */
@@ -230,3 +231,4 @@ body {
     pointer-events: none;
     z-index: 999;
 }
+
